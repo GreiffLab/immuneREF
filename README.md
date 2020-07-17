@@ -9,8 +9,7 @@ Documentation: https://immuneREF.readthedocs.io
 
 Publication: tba
 
-![alt text](https://github.com/GreiffLab/immuneREF/blob/master/docs/source/images/immuneREF_Figures-01.png)
-
+![alt text](https://github.com/GreiffLab/immuneREF/blob/master/docs/source/images/immuneREF_Figures-01.jpg?raw=true)
 
 Prerequisites
 -------------
