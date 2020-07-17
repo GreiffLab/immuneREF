@@ -1,0 +1,67 @@
+# immuneREF
+
+Overview
+========
+
+ImmuneREF allows the analysis of repertoire similarity on a one-to-one, one-to-many and many-to-many scale across repertoire features ranging from fully sequence- to fully frequency-dependent ones. This results in a thorough characterisation of repertoire datasets for applications ranging from quality control to the search for disease-specific repertoire characteristics.
+
+Documentation: https://immuneREF.readthedocs.io
+
+Publication: tba
+
+![alt text](https://github.com/GreiffLab/immuneSIM/blob/master/docs/source/images/immuneREF_Figures-01.png)
+
+
+Prerequisites
+-------------
+
+To be able to install immuneREF, the following prerequisites are:
+
+1.  R >= 3.4.0.
+2.  Imports: ggplot2,igraph,Biostrings,stringdist,vegan,doMC,foreach,dplyr,grid,kebabs,ComplexHeatmap
+
+
+
+Installing immuneREF
+--------------------
+
+The package can be installed via GitHub.
+
+Installation via GitHub:
+1.  Check if all the prerequisites are fulfilled/installed.
+2.  Execute the following lines in R:
+
+```r
+
+    #install the devtools package
+    install.packages("devtools")
+    
+    #load devtools and install immuneSIM from github 
+    library(devtools)
+    install_github("GreiffLab/immuneREF")
+```    
+
+
+Workflow of the quickstart simulation
+======================================
+
+The quickstart workflow in immuneREF_quickstart.R shows the simplest application of 'immuneREF'. In it we run an analysis on a tutorial repertoire dataset consisting of four simulated immune repertoires (included in the package). At the end of the quickstart script, a heatmap visualizing the similarity landscape of the tutorial repertoires is generated. For a more detailed, step-by-step analysis we additionally provide a tutoiral R script (immuneREF_tutorial.R)
+
+
+Performing the analysis
+-----------------------
+
+immueREF_quickstart.R, provides a simple example of an immuneREF analysis that includes 3 steps: (i) Extraction of repertoire features, (ii) Calculation of feature-specific similarity between repertoire pairs and (iii) visualization of the results. 
+
+```r
+    library(immuneREF)
+    
+    # Calculate simularity networks for single features
+    similarity_networks <- immuneREF_quickstart(repertoire_list = tutorial_repertoires)
+    
+    # Calculate network features and plot heatmap of repertoire similarities
+    network_features <- analyze_similarity_network(multilayer_network)
+    
+    pheatmap::pheatmap(multilayer_network,scale='row')
+
+```
