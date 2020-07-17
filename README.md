@@ -14,7 +14,7 @@ Publication: tba
 Prerequisites
 -------------
 
-To be able to install immuneREF, the following prerequisites are:
+To be able to install immuneREF, the following prerequisites need to be fulfilled:
 
 1.  R >= 3.4.0.
 2.  Imports: kebabs, igraph, Biostrings, stringdist, vegan, doMC, foreach, dplyr, ggplot2, ggiraphExtra, grid, ComplexHeatmap
@@ -31,12 +31,15 @@ Installation via GitHub:
 
 ```r
 
-    #install the devtools package
+    # Install the devtools package
     install.packages("devtools")
     
-    #load devtools and install immuneSIM from github 
+    # Load devtools and install immuneSIM from github 
     library(devtools)
     install_github("GreiffLab/immuneREF")
+    
+    # Test if installation was successful
+    library(immuneREF)
 ```    
 
 
