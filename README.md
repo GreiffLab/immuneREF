@@ -9,7 +9,7 @@ Documentation: https://immuneREF.readthedocs.io
 
 Publication: tba
 
-![alt text](https://github.com/GreiffLab/immuneREF/blob/master/docs/source/images/immuneREF_Figures-01.jpg?raw=true)
+![alt text](docs/source/images/immuneREF_Figures-01.jpg?raw=true)
 
 Prerequisites
 -------------
@@ -17,8 +17,7 @@ Prerequisites
 To be able to install immuneREF, the following prerequisites are:
 
 1.  R >= 3.4.0.
-2.  Imports: ggplot2,igraph,Biostrings,stringdist,vegan,doMC,foreach,dplyr,grid,kebabs,ComplexHeatmap
-
+2.  Imports: kebabs, igraph, Biostrings, stringdist, vegan, doMC, foreach, dplyr, ggplot2, ggiraphExtra, grid, ComplexHeatmap
 
 
 Installing immuneREF
