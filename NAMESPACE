@@ -1,0 +1,14 @@
+exportPattern("^[[:alpha:]]+")
+
+exportPattern("^[^\\.]")
+
+importFrom("stats", "pnorm", "qnorm", "runif","cor", "weighted.mean")
+importFrom("utils", "tail", "combn", "read.table")
+importFrom("Biostrings","DNAStringSet")
+importFrom("stringdist", "stringdistmatrix")
+importFrom("igraph", "graph_from_adjacency_matrix","hub_score","ecount","components","degree.distribution","degree_distribution","degree","mean_distance","diameter","betweenness","transitivity","gorder")
+importFrom("vegan","renyi")
+importFrom("kebabs","predict")
+importFrom("foreach","foreach")
+importFrom("doMC","registerDoMC")
+importFrom("data.table","setDF","rbindlist")

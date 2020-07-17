@@ -1,0 +1,29 @@
+Package: immuneREF
+Type: Package
+Title: Comparing Immune Repertoires
+Version: 0.5.0
+Authors@R: c(
+    person("Cedric", "Weber", email = "cedric.weber@bsse.ethz.ch",role = c("aut", "cre")),
+    person("Victor", "Greiff", email = "victor.greiff@medisin.uio.no",role = "aut"))
+Author: Cedric Weber [aut, cre],
+  Victor Greiff [aut]
+Maintainer: Cedric Weber <cedric.weber@bsse.ethz.ch>
+Description: Compares immune repertoires based on 6 commonly used characteristics
+    and generates correlation matrix.
+Depends: R (>= 3.4.0)
+Imports: kebabs,
+    igraph,
+    Biostrings,
+    stringdist, 
+    vegan,
+    doMC,
+    foreach,
+    dplyr,
+    ggplot2,
+    ggiraphExtra,
+    grid,
+    ComplexHeatmap
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
