@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>immuneREF feature layers &mdash; immuneREF 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Determining repertoire similarities" href="single_layer_calculation.html" />
+    <link rel="prev" title="In-depth Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> immuneREF
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">In-depth Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">immuneREF feature layers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-feature-layers-of-immuneref-overview">The feature layers of immuneREF (Overview)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diversity">Diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#germline-gene-usage">Germline gene usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#positional-amino-acid-frequency">Positional amino acid frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sequential-occurrence-of-gapped-k-mers">Sequential occurrence of gapped k-mers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-architecture">Network architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convergence-repertoire-overlap-immunosignatures">Convergence (Repertoire overlap, Immunosignatures)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-feature-layer-analysis">Running the feature layer analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="single_layer_calculation.html">Determining repertoire similarities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="immuneREF_output_analysis.html">Analysis of immuneREF output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">immuneREF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>immuneREF feature layers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/single_feature_analysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="immuneref-feature-layers">
+<span id="single-feature-analysis"></span><h1>immuneREF feature layers<a class="headerlink" href="#immuneref-feature-layers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-feature-layers-of-immuneref-overview">
+<span id="feature-layers"></span><h2>The feature layers of immuneREF (Overview)<a class="headerlink" href="#the-feature-layers-of-immuneref-overview" title="Permalink to this headline">¶</a></h2>
+<p>This section provides an overview over the six immuneREF feature layers:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#diversity-layer"><span class="std std-ref">Diversity</span></a></li>
+<li><a class="reference internal" href="#vdj-layer"><span class="std std-ref">Germline gene usage</span></a></li>
+<li><a class="reference internal" href="#aa-layer"><span class="std std-ref">Positional amino acid frequency</span></a></li>
+<li><a class="reference internal" href="#kmer-layer"><span class="std std-ref">Sequential occurrence of gapped k-mers</span></a></li>
+<li><a class="reference internal" href="#architecture-layer"><span class="std std-ref">Network architecture</span></a></li>
+<li><a class="reference internal" href="#convergence-layer"><span class="std std-ref">Convergence (Repertoire overlap, Immunosignatures)</span></a></li>
+<li><a class="reference internal" href="#computing-layers"><span class="std std-ref">Running the feature layer analysis</span></a></li>
+</ul>
+<div class="section" id="diversity">
+<span id="diversity-layer"></span><h3>Diversity<a class="headerlink" href="#diversity" title="Permalink to this headline">¶</a></h3>
+<p>The diversity profiles were calculated as previously described <a class="footnote-reference" href="#id9" id="id1">[1]</a>. Briefly, we calculated the Hill-diversity for alphas 0–10 in steps of 0.1 with alpha = 1 being defined as the Shannon entropy. Each entry in the profile varies between ≈0 and 1, where higher values indicate an increasingly uniform frequency distribution.</p>
+<div class="math">
+<p><img src="_images/math/6f6a81da64536e7c339d1aa91f470a2c69546e3c.png" alt="{}^{\alpha}D = (\sum_{i=1}^{n} f^{\alpha})^\frac{1}{1-\alpha}"/></p>
+</div></div>
+<div class="section" id="germline-gene-usage">
+<span id="vdj-layer"></span><h3>Germline gene usage<a class="headerlink" href="#germline-gene-usage" title="Permalink to this headline">¶</a></h3>
+<p>The frequency of occurrence of IMGT germline genes <a class="footnote-reference" href="#id10" id="id2">[2]</a> in each repertoire was calculated for each repertoire depending on species and immune receptor class (Ig, TCR).
+The frequency of germline genes (defined by the ImmunoGenetics Database, IMGT) <a class="footnote-reference" href="#id10" id="id3">[2]</a> across clones in each repertoire was calculated for each repertoire depending on species and immune receptor class (Ig, TR). The germline gene usage allows insight into deviations from a baseline recombinational likelihood and thereby captures the potential impact of disease, vaccine or other events on the immune state. To determine germline gene usage similarities, germline gene frequencies across clones are extracted for each individual.</p>
+</div>
+<div class="section" id="positional-amino-acid-frequency">
+<span id="aa-layer"></span><h3>Positional amino acid frequency<a class="headerlink" href="#positional-amino-acid-frequency" title="Permalink to this headline">¶</a></h3>
+<p>The positional amino acid frequencies were calculated separately for each CDR3 sequence length present in the repertoire. To decrease the chance of bias by small sets of short and long CDR3 sequences, we limit this analysis to a range of most common lengths (i.e., between 8–20 amino acids) <a class="footnote-reference" href="#id11" id="id4">[3]</a>. This range can be adapted via the <code class="docutils literal notranslate"><span class="pre">calc_characteristics()</span></code> parameter <code class="docutils literal notranslate"><span class="pre">aa_range</span></code> which takes in a vector containing the range of lengths (e.g. <code class="docutils literal notranslate"><span class="pre">aa_range</span> <span class="pre">=</span> <span class="pre">c(10:22)</span></code> to consider AA frequenceis of lengths 10-22)</p>
+</div>
+<div class="section" id="sequential-occurrence-of-gapped-k-mers">
+<span id="kmer-layer"></span><h3>Sequential occurrence of gapped k-mers<a class="headerlink" href="#sequential-occurrence-of-gapped-k-mers" title="Permalink to this headline">¶</a></h3>
+<p>For a given (nucleotide) k-mer size k and maximal gap length m , optimized to maximize information via parameter search, the gapped-pair-k-mer occurrences were counted for all gap sizes &lt;= m. The counts were normalized by the total number of found patterns across all gap sizes such that short range patterns were weighted higher than large gap sizes. Users are free to introduce a new k-mer dictionary to analyze different k-mer lengths and gap sizes using the function <code class="docutils literal notranslate"><span class="pre">make_kmer_dictionary()</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Constructs a gapped kmer dictionary used to count k-mers</span>
+<span class="c1"># The arguments determine the k_nt and gap_size_nt determine the pattern length and gap size</span>
+<span class="n">dictionary_counts</span> <span class="o">&lt;-</span> <span class="nf">make_kmer_dictionary</span><span class="p">(</span>
+            <span class="n">k_nt</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span>
+            <span class="n">gap_size_nt</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="network-architecture">
+<span id="architecture-layer"></span><h3>Network architecture<a class="headerlink" href="#network-architecture" title="Permalink to this headline">¶</a></h3>
+<p>immuneREF constructs a similarity network for each repertoire <a class="footnote-reference" href="#id12" id="id5">[4]</a> where nodes represent CDR3 sequences connected by Levenshtein Distance LD=1 similarity-edges using the igraph package <a class="footnote-reference" href="#id13" id="id6">[5]</a>. The resulting networks were analyzed as previously described with respect to four measures: (i) cumulative degree distribution, (ii) mean hub score (Kleinberg hub centrality score), (iii) fraction of unconnected clusters and nodes and (iv) percent of sequences in the largest connected component.</p>
+</div>
+<div class="section" id="convergence-repertoire-overlap-immunosignatures">
+<span id="convergence-layer"></span><h3>Convergence (Repertoire overlap, Immunosignatures)<a class="headerlink" href="#convergence-repertoire-overlap-immunosignatures" title="Permalink to this headline">¶</a></h3>
+<p>To compare repertoire similarity with respect to the presence of immunosignatures, immuneREF provides two options.</p>
+<p>The first (and standard) option is to measure the convergence of repertoires by calculating a simple overlap measure according to:</p>
+<div class="math">
+<p><img src="_images/math/efded82072cf3254b4887fe446d3bd2b7c4c4616.png" alt="\mathrm{overlap}=  \frac{\mathrm{A} \cap \mathrm{B}}{\min(|\mathrm{A}|, |\mathrm{B}|)}"/></p>
+</div><p>For this, we provide the <code class="docutils literal notranslate"><span class="pre">repertoire_overlap()</span></code> function which includes the <code class="docutils literal notranslate"><span class="pre">basis</span></code> option that determines based on which sequence the overlap is calculated.
+The options are: “CDR3_aa”,”CDR3_nt”,”VDJ_aa”,”VDJ_nt”,”V_CDR3_J_aa” and “V_CDR3_J_nt”</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the overlap across all repertoire pairs. Default basis is CDR3_aa</span>
+<span class="n">overlap_layer</span> <span class="o">&lt;-</span> <span class="nf">repertoire_overlap</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="s">&quot;CDR3_aa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second option integrated in immuneREF is to evaluate the repertoires using pre-trained machine learning models. In this approach, the models are used to predict presence of sequences with given characteristics (public clones, antigen-specificity). For each repertoire, the percentage of positively predicted sequences is then taken as the repertoire immunosignature feature. The base immuneREF package provides an SVM model trained to classify public and private CDR3 sequences (murine Ig) <a class="footnote-reference" href="#id14" id="id7">[6]</a> using the KeBABS R-package <a class="footnote-reference" href="#id15" id="id8">[7]</a>.</p>
+<p>Once a larger number of robust pretrained ML models are available future versions of immuneREF will enable their rapid application for immune repertoire diagnostics.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">calc_characteristics</span></code> already calculates a basic immunosignature layer based on the contained SVM model (predicting similarity with respect to presence of of murine Ig public clones). The associated similarity layer can be calculated using:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">immunosignature_layer</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span> <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">calc_characterstics()</span></code> function has an additional parameter <code class="docutils literal notranslate"><span class="pre">models</span></code> which allows the user to read-in a list of ML models compatible with the <code class="docutils literal notranslate"><span class="pre">kebabs::predict()</span></code> function for the calculation of the immunosignature feature.</p>
+</div>
+<div class="section" id="running-the-feature-layer-analysis">
+<span id="computing-layers"></span><h3>Running the feature layer analysis<a class="headerlink" href="#running-the-feature-layer-analysis" title="Permalink to this headline">¶</a></h3>
+<p>immuneREF analyzes the similarity between repertoires across six major features. Before the similarity calculation, each repertoire is analyzed with respect to all of these features.
+This analysis can be performed all in one or in separate steps per single layer (especially useful for large datasets). Below is an example of the analysis across all features:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Feature calculation</span>
+
+<span class="c1"># Extract repertoire sizes and names</span>
+<span class="n">repertoire_lengths</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">tutorial_repertoires</span><span class="p">),</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">tutorial_repertoires[[x]]</span><span class="p">))</span>
+<span class="n">repertoire_names</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">tutorial_repertoires</span><span class="p">),</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">as.character</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">tutorial_repertoires[[x]]</span><span class="o">$</span><span class="n">name_repertoire</span><span class="p">)))</span>
+
+
+<span class="c1"># Calculate all features for each repertoire</span>
+<span class="n">repertoires_analyzed</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">tutorial_repertoires</span><span class="p">)){</span>
+  <span class="n">repertoires_analyzed[[repertoire_names[i]]]</span> <span class="o">&lt;-</span> <span class="nf">calc_characteristics</span><span class="p">(</span>
+        <span class="n">repertoire_df</span> <span class="o">=</span> <span class="n">tutorial_repertoires[[i]]</span><span class="p">,</span>
+        <span class="n">species</span> <span class="o">=</span> <span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names[i]</span><span class="p">,</span><span class="s">&quot;_&quot;</span><span class="p">)</span><span class="n">[[1]][2]</span><span class="p">,</span>
+        <span class="n">receptor</span> <span class="o">=</span> <span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names[i]</span><span class="p">,</span><span class="s">&quot;_&quot;</span><span class="p">)</span><span class="n">[[1]][3]</span><span class="p">,</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names[i]</span><span class="p">,</span><span class="s">&quot;_&quot;</span><span class="p">)</span><span class="n">[[1]][4]</span><span class="p">,</span>
+        <span class="n">identifier_rep</span> <span class="o">=</span> <span class="n">repertoire_names[i]</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">save</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;repertoires_analyzed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<span id="reference-chp-layer"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A bioinformatic framework for immune repertoire diversity profiling enables detection of immunological status, Greiff et al., Genome Medicine, 2015, <a class="reference external" href="https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-015-0169-8">https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-015-0169-8</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> IMGT/JunctionAnalysis: IMGT Standardized Analysis of the V-J and V-D-J Junctions of the Rearranged Immunoglobulins (IG) and T Cell Receptors (TR), Giudicelli et al., Cold Spring Harbor Protocols, 2011, <a class="reference external" href="http://cshprotocols.cshlp.org/content/2011/6/pdb.prot5634">http://cshprotocols.cshlp.org/content/2011/6/pdb.prot5634</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>Systems Analysis Reveals High Genetic and Antigen-Driven Predetermination of Antibody Repertoires throughout B Cell Development, Greiff et al., Cell Reports, 19(7), 2017, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S221112471730565X">https://www.sciencedirect.com/science/article/pii/S221112471730565X</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>Large-scale network analysis reveals the sequence space architecture of antibody repertoires, Miho et al., Nature Communications, 2019, <a class="reference external" href="https://www.nature.com/articles/s41467-019-09278-8">https://www.nature.com/articles/s41467-019-09278-8</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[5]</a></td><td>The igraph software package for complex network research, Csardi G, Nepusz T, InterJournal, Complex Systems 1695, 2006, <a class="reference external" href="http://igraph.org">http://igraph.org</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[6]</a></td><td>Learning the High-Dimensional Immunogenomic Features That Predict Public and Private Antibody Repertoires, Greiff et al., Journal of Immunology, 99(8), 2017, <a class="reference external" href="http://www.jimmunol.org/content/199/8/2985">http://www.jimmunol.org/content/199/8/2985</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[7]</a></td><td>KeBABS: an R package for kernel-based analysis of biological sequences. Palme et al., Bioinformatics, 31, 2015, <a class="reference external" href="https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv176">https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv176</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="single_layer_calculation.html" class="btn btn-neutral float-right" title="Determining repertoire similarities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="In-depth Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CRW
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

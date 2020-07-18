@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analysis of immuneREF output &mdash; immuneREF 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Acknowledgments" href="acknowledgments.html" />
+    <link rel="prev" title="Multi-layer analysis" href="multi_layer_calculation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> immuneREF
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">In-depth Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_feature_analysis.html">immuneREF feature layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_layer_calculation.html">Determining repertoire similarities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Analysis of immuneREF output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#analyzing-similarity-networks">Analyzing Similarity Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-heatmaps-of-similarity-layers">A. Heatmaps of similarity layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-global-similarity-scores">B. Global similarity scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-local-similarity-scores">C. Local similarity scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-many-to-one-analysis-across-6-features">D. Many-to-one analysis across 6 features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#e-classical-repertoire-analysis-on-a-one-to-one-scale">E. Classical repertoire analysis on a one-to-one scale</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bonus-network-characteristics">Bonus: Network characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">immuneREF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Analysis of immuneREF output</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/immuneREF_output_analysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analysis-of-immuneref-output">
+<span id="immuneref-output-analysis"></span><h1>Analysis of immuneREF output<a class="headerlink" href="#analysis-of-immuneref-output" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="analyzing-similarity-networks">
+<h2>Analyzing Similarity Networks<a class="headerlink" href="#analyzing-similarity-networks" title="Permalink to this headline">¶</a></h2>
+<p>Be it a single-layer or multi-layer similarity network, the analysis of the network structure is a central goal of immuneREF.
+Here, we provide an overview of several approaches to analyze the immuneREF similarity networks, including</p>
+<ul class="simple">
+<li>Draw clustered heatmaps for each layer and the condensed network</li>
+<li>Determine network features of similarity layers</li>
+<li>Analyze global similarity score distribution (many-to-many)</li>
+<li>Identify most and least similar repertoires per category via local similarity</li>
+<li>Six-dimensional many-to-one comparison of repertoires to reference repertoires</li>
+<li>Classical repertoire analysis of repertoires based on the immuneREF feature extraction.</li>
+</ul>
+<div class="section" id="a-heatmaps-of-similarity-layers">
+<span id="heatmaps"></span><h3>A. Heatmaps of similarity layers<a class="headerlink" href="#a-heatmaps-of-similarity-layers" title="Permalink to this headline">¶</a></h3>
+<p>Representing the similarity layers by a hierarchically clustered Heatmap (R-package ComplexHeatmap <a class="footnote-reference" href="#id2" id="id1">[1]</a>) allows easy to interpret analysis of repertoire similarity and category groupings.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># Draw heatmap of immuneREF layers</span>
+<span class="c1">###</span>
+
+<span class="c1"># Prepare list of all layers you want to plot heatmaps for (here 6 single layers and 1 condensed layer)</span>
+<span class="n">list_all_layers</span> <span class="o">&lt;-</span> <span class="n">list_single_layers</span>
+<span class="n">list_all_layers[[</span><span class="s">&quot;Condensed&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="n">cormat</span>
+
+
+<span class="c1"># Prepare list with heatmap annotations containing categories and colors</span>
+<span class="n">annotation_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">annotation_list[[</span><span class="s">&quot;categories&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Species</span><span class="o">=</span><span class="n">input_data_ref</span><span class="o">$</span><span class="n">species</span><span class="p">,</span>
+                                            <span class="n">Receptor</span> <span class="o">=</span> <span class="n">input_data_ref</span><span class="o">$</span><span class="n">receptor</span><span class="p">)</span>
+
+<span class="n">annotation_list[[</span><span class="s">&quot;colors&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">Species</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">mm</span><span class="o">=</span><span class="s">&#39;#ffffbf&#39;</span><span class="p">,</span><span class="n">hs</span><span class="o">=</span><span class="s">&#39;#fc8d59&#39;</span><span class="p">),</span>
+                                  <span class="n">Receptor</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">ig</span><span class="o">=</span><span class="s">&#39;#91bfdb&#39;</span><span class="p">))</span>
+
+<span class="c1"># For each entry (immuneREF layer) plot a heatmap (path_figure folder needs to exist already)</span>
+<span class="nf">print_heatmap_sims</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                  <span class="n">annotation_list</span><span class="o">=</span><span class="n">annotation_list</span><span class="p">,</span>
+                  <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure" id="id3">
+<img alt="_images/heatmap_condensed.png" src="_images/heatmap_condensed.png" />
+<p class="caption"><span class="caption-text">Visualizing similarity scores across network in a hierarchically clustered heatmap</span></p>
+</div>
+</div>
+<div class="section" id="b-global-similarity-scores">
+<span id="global-similarity"></span><h3>B. Global similarity scores<a class="headerlink" href="#b-global-similarity-scores" title="Permalink to this headline">¶</a></h3>
+<p>The global similarity represents the set of all similarity scores (i.e., weighted edges) in a given repertoire similarity network (many-to-many). Global similarity may be analyzed across the entire network (all repertoires) or on subgraphs of repertoires of a given category.</p>
+<div class="math">
+<p><img src="_images/math/a05962de740a2a027d54fc0a92771b259359a1e0.png" alt="\mathrm{global\:similarity_{network}}= \bigcup_{category}similarity\,scores_{repertoire}"/></p>
+</div><p>For easier comparability of overall and per category similarity score distribution, immuneREF visualizes the data using violin plots.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define how the data should be subset into categories for plotting.</span>
+<span class="n">categories_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">categories_list[[</span><span class="s">&quot;categories&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">input_data_ref</span>
+<span class="n">categories_list[[</span><span class="s">&quot;color&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="s">&#39;#91bfdb&#39;</span><span class="p">,</span><span class="s">&#39;#ffffbf&#39;</span><span class="p">)</span>
+<span class="n">categories_list[[</span><span class="s">&quot;subset&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="s">&quot;species&quot;</span>
+
+<span class="c1"># Plot global similarity</span>
+<span class="nf">print_global_similarity</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                      <span class="n">categories_list</span> <span class="o">=</span> <span class="n">categories_list</span><span class="p">,</span>
+                      <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure" id="id4">
+<img alt="_images/global_similarity_condensed.png" src="_images/global_similarity_condensed.png" />
+<p class="caption"><span class="caption-text">Comparing similarity scores across network and by species.</span></p>
+</div>
+</div>
+<div class="section" id="c-local-similarity-scores">
+<span id="local-similarity"></span><h3>C. Local similarity scores<a class="headerlink" href="#c-local-similarity-scores" title="Permalink to this headline">¶</a></h3>
+<p>To determine how representative single nodes we developed local similarity based on the strength of network nodes. It is calculated by dividing the node strength given node (sum of edge weights of the adjacent edges of a node) by the sum of all node strengths in the subgraph of the category of interest (for example the sum of node strengths of the subgraph of all human repertoires.)</p>
+<div class="math">
+<p><img src="_images/math/2cf421748656b5e3552cb4923e98983e87014bd3.png" alt="\mathrm{local\:similarity_{repertoire}}= \frac{Node\,Strength_{repertoire}}{\sum_{category}Node\,Strength}"/></p>
+</div><p>Local similarity gives insight into which repertoires most similar to repertoires of the same condition/species/category. This allows the identification of condition-representative repertoires.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># Plot local similarity per category and identify max and min locally similar repertoires</span>
+<span class="c1">##</span>
+
+<span class="n">max_min_reps</span><span class="o">&lt;-</span><span class="nf">print_local_similarity</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                      <span class="n">categories_list</span> <span class="o">=</span> <span class="n">categories_list</span><span class="p">,</span>
+                      <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure" id="id5">
+<img alt="_images/local_similarity_condensed.png" src="_images/local_similarity_condensed.png" />
+<p class="caption"><span class="caption-text">Comparing local similarity between species. As the tutorial only analyzes two repertoires per category the local similarity is 0.5 for each repertoire.</span></p>
+</div>
+</div>
+<div class="section" id="d-many-to-one-analysis-across-6-features">
+<span id="radar-similarity"></span><h3>D. Many-to-one analysis across 6 features<a class="headerlink" href="#d-many-to-one-analysis-across-6-features" title="Permalink to this headline">¶</a></h3>
+<p>Radar plots enable the visualization of similarity of one, or a group of repertoires to a reference repertoire across 6 features.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># Radar plot to visualize similarity across all 6 feature layers</span>
+<span class="c1">##</span>
+<span class="n">radar_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">radar_list[[</span><span class="s">&quot;category&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Murine A&quot;</span><span class="p">,</span><span class="s">&quot;Murine B&quot;</span><span class="p">,</span><span class="s">&quot;Human A&quot;</span><span class="p">,</span><span class="s">&quot;Human B&quot;</span><span class="p">)</span>
+<span class="n">radar_list[[</span><span class="s">&quot;roi&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="p">,</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="p">,</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="p">,</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="p">)</span>
+<span class="n">radar_list[[</span><span class="s">&quot;label&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Murine A&quot;</span><span class="p">,</span><span class="s">&quot;Murine B&quot;</span><span class="p">,</span><span class="s">&quot;Human A&quot;</span><span class="p">,</span><span class="s">&quot;Human B&quot;</span><span class="p">)</span>
+<span class="n">radar_list[[</span><span class="s">&quot;colors&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;grey&quot;</span><span class="p">,</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
+
+<span class="n">comparison_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">roi</span><span class="o">=</span><span class="n">radar_list[[</span><span class="s">&quot;roi&quot;</span><span class="n">]]</span><span class="p">,</span>
+  <span class="n">roi_names</span><span class="o">=</span><span class="n">radar_list[[</span><span class="s">&quot;category&quot;</span><span class="n">]]</span><span class="p">,</span>
+  <span class="n">ref</span><span class="o">=</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="p">,</span>
+  <span class="n">plot_names</span><span class="o">=</span><span class="n">radar_list[[</span><span class="s">&quot;label&quot;</span><span class="n">]]</span><span class="p">,</span>
+  <span class="n">colors</span><span class="o">=</span><span class="n">radar_list[[</span><span class="s">&quot;colors&quot;</span><span class="n">]]</span><span class="p">)</span>
+
+<span class="nf">print_repertoire_radar</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_single_layers</span><span class="p">,</span>
+  <span class="n">to_compare</span><span class="o">=</span><span class="n">comparison_list</span><span class="p">,</span>
+  <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">,</span>
+  <span class="n">name_plot</span><span class="o">=</span><span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure" id="id6">
+<img alt="_images/radar_plot_tutorial.png" src="_images/radar_plot_tutorial.png" />
+<p class="caption"><span class="caption-text">Comparing 4 repertoires across six features (Reference repertoire: murine IgH).</span></p>
+</div>
+</div>
+<div class="section" id="e-classical-repertoire-analysis-on-a-one-to-one-scale">
+<span id="classical"></span><h3>E. Classical repertoire analysis on a one-to-one scale<a class="headerlink" href="#e-classical-repertoire-analysis-on-a-one-to-one-scale" title="Permalink to this headline">¶</a></h3>
+<p>The immuneREF function print_repertoire_comparison() outputs a comparison between two repertoires across three classical repertoire features: Amino acid frequency, Germline gene usage and Clonal expansion. The example code below takes advantage of the results of the per-feature analysis saved in the list <code class="docutils literal notranslate"><span class="pre">repertoires_analyzed</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">####</span>
+<span class="c1"># Classical repertoire analysis of maximally and minimally similar repertoires per category</span>
+<span class="c1">####</span>
+
+<span class="c1">#print classic repertoires comparing max and min locally similar plots for:</span>
+<span class="c1"># simulated human igh repertoires</span>
+<span class="n">hs_igh</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+
+<span class="nf">print_repertoire_comparison</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">hs_igh</span><span class="p">,</span>
+    <span class="n">name_plots</span><span class="o">=</span><span class="s">&quot;hs_igh&quot;</span><span class="p">,</span>
+    <span class="n">aa_freq_length</span><span class="o">=</span><span class="m">17</span><span class="p">,</span>
+    <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure" id="id7">
+<img alt="_images/all_hs_igh.png" src="_images/all_hs_igh.png" />
+<p class="caption"><span class="caption-text">Comparing two human IgH repertoires with respect to Amino acid frequency, VJ (germline gene) usage and Clonal expansion.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-network-characteristics">
+<h2>Bonus: Network characteristics<a class="headerlink" href="#bonus-network-characteristics" title="Permalink to this headline">¶</a></h2>
+<p>Additionally, the immuneREF similarity networks may be analyzed with respect to their network features using the <code class="docutils literal notranslate"><span class="pre">analyze_similarity_network()</span></code> function, which returns a list of network features.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate Network Characteristics</span>
+<span class="n">network_features</span> <span class="o">&lt;-</span> <span class="nf">analyze_similarity_network</span><span class="p">(</span><span class="n">cormat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<span id="reference-chp-output-plots"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Gu Z, Eils R, Schlesner M (2016). “Complex heatmaps reveal patterns and correlations in multidimensional genomic data.” Bioinformatics., 10.18129/B9.bioc.ComplexHeatmap</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="acknowledgments.html" class="btn btn-neutral float-right" title="Acknowledgments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="multi_layer_calculation.html" class="btn btn-neutral float-left" title="Multi-layer analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CRW
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Determining repertoire similarities &mdash; immuneREF 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multi-layer analysis" href="multi_layer_calculation.html" />
+    <link rel="prev" title="immuneREF feature layers" href="single_feature_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> immuneREF
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">In-depth Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_feature_analysis.html">immuneREF feature layers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Determining repertoire similarities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#similarity-per-feature">Similarity per feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#table-similarity-calculation-per-feature">Table similarity calculation per feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#similarity-calculation-for-all-features">Similarity calculation for all features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="immuneREF_output_analysis.html">Analysis of immuneREF output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">immuneREF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Determining repertoire similarities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/single_layer_calculation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="determining-repertoire-similarities">
+<span id="single-layer-calculation"></span><h1>Determining repertoire similarities<a class="headerlink" href="#determining-repertoire-similarities" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="similarity-per-feature">
+<span id="similarity-features"></span><h2>Similarity per feature<a class="headerlink" href="#similarity-per-feature" title="Permalink to this headline">¶</a></h2>
+<p>Having calculated the features of each repertoire (See: <a class="reference internal" href="single_feature_analysis.html#single-feature-analysis"><span class="std std-ref">immuneREF feature layers</span></a>), the similarity value between each repertoire pair may be calculated. This is done on a per feature basis as laid out in the table below. These measures are the default settings of immuneREF. However, depending on application realm and repertoire characteristics, other methods might be preferred (JS-divergence, Morisita-Horn overlap, etc.) The user is free to deviate from these default settings.</p>
+</div>
+<div class="section" id="table-similarity-calculation-per-feature">
+<span id="similarity-overview"></span><h2>Table similarity calculation per feature<a class="headerlink" href="#table-similarity-calculation-per-feature" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">Similarity Calculation</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Layer</th>
+<th class="head">Similarity calculation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Diversity</td>
+<td>Pearson correlation, [1-3].</td>
+</tr>
+<tr class="row-odd"><td>VDJ Usage</td>
+<td>Pearson correlation coefficient was determined for each frequency vectors (Default V-, J-gene usage vectors) [3,4].</td>
+</tr>
+<tr class="row-even"><td>Positional AA Frequency</td>
+<td>Pearson correlation of positional frequency distributions between repertoires.</td>
+</tr>
+<tr class="row-odd"><td>Kmer occurrence</td>
+<td>Pearson correlation of gapped k-mer occurrence (k = 3, m ≤ 3) (Weber et al., 2019).</td>
+</tr>
+<tr class="row-even"><td>Network Architecture</td>
+<td>Mean of four measures, (i) Pearson correlated cumulative degree distribution, (ii) absolute mean hub score difference (complement), (iii) complement of absolute difference in fraction of unconnected clusters and nodes and (iv) complement of absolute difference of percent of sequences in the largest connected component.</td>
+</tr>
+<tr class="row-odd"><td>Repertoire overlap</td>
+<td>The clonal sequence overlap measure represents the similarity score between repertoires with respect to clonal convergence [3].</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="similarity-calculation-for-all-features">
+<span id="similarity-calculation"></span><h2>Similarity calculation for all features<a class="headerlink" href="#similarity-calculation-for-all-features" title="Permalink to this headline">¶</a></h2>
+<p>Having calculated the features <a class="reference internal" href="single_feature_analysis.html#single-feature-analysis"><span class="std std-ref">immuneREF feature layers</span></a> of  each repertoire, the similarity value between each repertoire pair may be calculated. The easiest way is to use either <code class="docutils literal notranslate"><span class="pre">calculate_similarities()</span></code> or <code class="docutils literal notranslate"><span class="pre">calculate_similarities_parallel()</span></code>. Alternatively, the user may choose to calculate each layer separately using the <code class="docutils literal notranslate"><span class="pre">make_cormat()</span></code> or <code class="docutils literal notranslate"><span class="pre">make_cormat_parallel()</span></code> functions:each repertoire the similarity score between each repertoire pair can be calculated.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate similarities across layers</span>
+<span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+
+<span class="c1"># Calculate diversity similarity</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;Diversity&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span>
+        <span class="n">repertoires_analyzed</span><span class="o">=</span> <span class="n">repertoires_analyzed</span><span class="p">,</span>     <span class="c1"># list of analyzed repertoires containing results for all features</span>
+        <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">),</span>                       <span class="c1"># weighting for each feature. since we calculate per feature set weight to 1 for diversity</span>
+        <span class="n">correlation_method</span><span class="o">=</span><span class="s">&#39;pearson&#39;</span><span class="p">)</span>                           <span class="c1"># correlation method is set.</span>
+
+<span class="c1"># Calculate AA frequency similarity</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;AAfreq&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span> <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># Calculate Architecture similarity (uses pearson correlation)</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;Architecture&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span> <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> <span class="n">correlation_method</span><span class="o">=</span><span class="s">&#39;pearson&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add repertoire overlap as additional similarity layer</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;repertoire_overlap&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="n">overlap_layer</span>
+
+<span class="c1"># Calculate VDJ usage similarity (includes weighting of germlines weights_vdj )</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;VDJ_usage&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span> <span class="n">weights_VDJ</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;V&quot;</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="s">&quot;D&quot;</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="s">&quot;J&quot;</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="s">&quot;VJ&quot;</span><span class="o">=</span><span class="m">0</span><span class="p">),</span> <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># Calculate k-mer occurrence similarity</span>
+<span class="n">list_single_layers[[</span><span class="s">&quot;k-mers&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="nf">make_cormat</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span> <span class="n">weights_overall</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1">## Alternatively to overlap the user may choose to calculate Immunosignatures similarity</span>
+<span class="c1">#list_single_layers[[&quot;Immunosignatures&quot;]] &lt;- make_cormat(repertoires_analyzed, weights_overall = c(0,0,0,1,0,0))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<span id="reference-chp-single-layer"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1]  The TCR Repertoire Reconstitution in Multiple Sclerosis: Comparing One-Shot and Continuous Immunosuppressive Therapies, Amoriello et al., Frontiers in immunology, 2020, <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fimmu.2020.00559/full">https://www.frontiersin.org/articles/10.3389/fimmu.2020.00559/full</a></p>
+<p>[2]  A bioinformatic framework for immune repertoire diversity profiling enables detection of immunological status, Greiff et al., Genome Medicine, 2015, <a class="reference external" href="https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-015-0169-8">https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-015-0169-8</a></p>
+<p>[3]  Learning the High-Dimensional Immunogenomic Features That Predict Public and Private Antibody Repertoires, Greiff et al., Journal of Immunology, 99(8), 2017, <a class="reference external" href="http://www.jimmunol.org/content/199/8/2985">http://www.jimmunol.org/content/199/8/2985</a></p>
+<p>[4]  immuneSIM: tunable multi-feature simulation of B- and T-cell receptor repertoires for immunoinformatics benchmarking, Weber et al., Bioinformatics, 2020, <a class="reference external" href="https://academic.oup.com/bioinformatics/article/36/11/3594/5802461">https://academic.oup.com/bioinformatics/article/36/11/3594/5802461</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multi_layer_calculation.html" class="btn btn-neutral float-right" title="Multi-layer analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="single_feature_analysis.html" class="btn btn-neutral float-left" title="immuneREF feature layers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CRW
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

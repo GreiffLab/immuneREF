@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>In-depth Tutorial &mdash; immuneREF 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="immuneREF feature layers" href="single_feature_analysis.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> immuneREF
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">In-depth Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-workflow-of-the-quickstart-analysis">The workflow of the quickstart analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-format">1. Input format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-of-single-features">2. Analysis of single features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-setting-up-of-reference-dataframe">A. Setting up of reference dataframe.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-calculate-repertoire-overlap">B. Calculate repertoire overlap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-subsampling-of-repertoires">C. Subsampling of repertoires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-calculation-of-the-remaining-5-features">D. Calculation of the remaining 5 features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#similarity-score-calculation">3. Similarity score calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#condensing-layers-into-multi-layer-network">4. Condensing layers into multi-layer network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization-of-results">5. Visualization of results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flowchart-immuneref-workflow">6. Flowchart immuneREF workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="single_feature_analysis.html">immuneREF feature layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_layer_calculation.html">Determining repertoire similarities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="immuneREF_output_analysis.html">Analysis of immuneREF output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">immuneREF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>In-depth Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="in-depth-tutorial">
+<span id="tutorial"></span><h1>In-depth Tutorial<a class="headerlink" href="#in-depth-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial summarizes how immuneREF may be used to analyze a set of four simulated immune repertoires.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview"><span class="std std-ref">Overview</span></a></li>
+<li><a class="reference internal" href="#workflow"><span class="std std-ref">The workflow of the quickstart analysis</span></a></li>
+<li><a class="reference internal" href="#input-prep"><span class="std std-ref">1. Input format</span></a></li>
+<li><a class="reference internal" href="#feature-analysis"><span class="std std-ref">2. Analysis of single features</span></a></li>
+<li><a class="reference internal" href="#feature-similarity"><span class="std std-ref">3. Similarity score calculation</span></a></li>
+<li><a class="reference internal" href="#condensing-layers"><span class="std std-ref">4. Condensing layers into multi-layer network</span></a></li>
+<li><a class="reference internal" href="#visualization"><span class="std std-ref">5. Visualization of results</span></a></li>
+<li><a class="reference internal" href="#flowchart"><span class="std std-ref">6. Flowchart immuneREF workflow</span></a></li>
+</ul>
+<div class="section" id="overview">
+<span id="id1"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>ImmuneREF allows the analysis of repertoire similarity on a one-to-one, one-to-many and many-to-many scale across repertoire
+features ranging from fully sequence- to fully frequency-dependent ones. For information on package availability and installation refer to <a class="reference internal" href="install.html#install"><span class="std std-ref">Installing immuneREF</span></a>.</p>
+<div class="figure" id="id4">
+<img alt="_images/immuneREF_Figures-01.png" src="_images/immuneREF_Figures-01.png" />
+<p class="caption"><span class="caption-text">The immuneREF workflow combines the analysis of a range of features to calculate a multidimensional similarity network of immune repertoires.</span></p>
+</div>
+</div>
+<div class="section" id="the-workflow-of-the-quickstart-analysis">
+<span id="workflow"></span><h2>The workflow of the quickstart analysis<a class="headerlink" href="#the-workflow-of-the-quickstart-analysis" title="Permalink to this headline">¶</a></h2>
+<p>The immuneREF repertoire analysis workflow consists of the following steps:</p>
+<ol class="arabic simple">
+<li>Preparation: Ensuring correct format of input repertoires.</li>
+<li>Analysis of six immune repertoire features for each repertoire.</li>
+<li>Similarity score calculation for each repertoire pair and feature.</li>
+<li>Condensing resulting similarity layers into a multi-layer network.</li>
+<li>Analysis of similarity dimensions.</li>
+</ol>
+<p>In the <code class="docutils literal notranslate"><span class="pre">immuneREF_tutorial.R</span></code>, we provide a step by step example of a standard immuneREF analysis.</p>
+</div>
+<div class="section" id="input-format">
+<span id="input-prep"></span><h2>1. Input format<a class="headerlink" href="#input-format" title="Permalink to this headline">¶</a></h2>
+<p>immuneREF requires your data to be in an R data.frame format with AIRR-standard <a class="footnote-reference" href="#id3" id="id2">[1]</a> column names:</p>
+<ul class="simple">
+<li>“sequence_aa”: Full amino acid VDJ sequence</li>
+<li>“sequence”: Full nucleotide VDJ sequence</li>
+<li>“junction_aa”: amino acid CDR3 sequence</li>
+<li>“junction”: nucleotide CDR3 sequence</li>
+<li>“freqs”: occurrence of each sequence in sequencing (column has to sum up to 1)</li>
+<li>“v_call”: V-gene annotation (IMGT format, compare naming to provided <code class="docutils literal notranslate"><span class="pre">list_germline_genes</span></code>)</li>
+<li>“d_call”: D-gene annotation (IMGT format, compare naming to provided <code class="docutils literal notranslate"><span class="pre">list_germline_genes</span></code>)</li>
+<li>“j_call”: J-gene annotation (IMGT format, compare naming to provided <code class="docutils literal notranslate"><span class="pre">list_germline_genes</span></code>)</li>
+</ul>
+<p>To test the compatibility of the input format, we provide the <code class="docutils literal notranslate"><span class="pre">compatibility_check()</span></code> function which checks for potential compatibility issues
+and notifies the user where adjustments might be necessary. Note that this function only provides insight into potential compatibility and does not necessarily indicate that the analysis will fail.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">compatibility_check</span><span class="p">(</span><span class="n">repertoire</span><span class="o">=</span><span class="n">tutorial_repertoires[[1]]</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s">&quot;mm&quot;</span><span class="p">,</span> <span class="n">receptor</span><span class="o">=</span><span class="s">&quot;igh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="analysis-of-single-features">
+<span id="feature-analysis"></span><h2>2. Analysis of single features<a class="headerlink" href="#analysis-of-single-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-setting-up-of-reference-dataframe">
+<span id="metadata"></span><h3>A. Setting up of reference dataframe.<a class="headerlink" href="#a-setting-up-of-reference-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>First, we set up a reference dataframe that contains meta-information for each repertoire that is to be analyzed. This dataframe will summarize
+the datasets and serves as a reference for the analysis of isolated categories downstream.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set working directory</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
+
+<span class="c1"># Load datasets (check for compatibility,</span>
+<span class="c1"># Compatible repertoires have:</span>
+<span class="c1">#       1) AIRR standard column naming.</span>
+<span class="c1">#       2) VJ naming compatible with the included list_germline_genes dataset.</span>
+<span class="c1">#       3) Clonal frequencies that sum up to 1.</span>
+<span class="n">list_simulated_repertoires</span> <span class="o">&lt;-</span> <span class="n">tutorial_repertoires</span>
+
+<span class="c1"># Set number of repertoires to be analyzed and names for reference dataframe</span>
+<span class="n">repertoire_names</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">)</span>
+<span class="n">repertoire_lengths</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">,</span><span class="n">nrow</span><span class="p">)</span>
+<span class="n">repertoire_species</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names</span><span class="p">,</span> <span class="s">&quot;\\_&quot;</span><span class="p">),</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x[[1]]</span><span class="p">)</span>
+<span class="n">repertoire_receptor</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names</span><span class="p">,</span> <span class="s">&quot;\\_&quot;</span><span class="p">),</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x[[2]]</span><span class="p">)</span>
+<span class="n">repertoire_chain</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">strsplit</span><span class="p">(</span><span class="n">repertoire_names</span><span class="p">,</span> <span class="s">&quot;\\_&quot;</span><span class="p">),</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x[[3]]</span><span class="p">)</span>
+
+<span class="c1"># Create dataframe containing all relevant metadata on repertoires</span>
+<span class="n">input_data_ref</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">sample_id</span> <span class="o">=</span> <span class="n">repertoire_names</span><span class="p">,</span>
+                           <span class="n">nb_sequences</span> <span class="o">=</span> <span class="n">repertoire_lengths</span><span class="p">,</span>
+                           <span class="n">species</span> <span class="o">=</span> <span class="n">repertoire_species</span><span class="p">,</span>
+                           <span class="n">receptor</span> <span class="o">=</span> <span class="n">repertoire_receptor</span><span class="p">,</span>
+                           <span class="n">chain</span> <span class="o">=</span> <span class="n">repertoire_chain</span><span class="p">,</span><span class="n">row.names</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">repertoire_names</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="b-calculate-repertoire-overlap">
+<span id="overlap"></span><h3>B. Calculate repertoire overlap<a class="headerlink" href="#b-calculate-repertoire-overlap" title="Permalink to this headline">¶</a></h3>
+<p>To determine the “Convergence” feature layer, we calculate the repertoire overlap of the full repertoires. In the standard immuneREF workflow,
+a simple 100% CDR3 amino acid match is used <code class="docutils literal notranslate"><span class="pre">basis</span> <span class="pre">=</span> <span class="pre">&quot;CDR3_aa&quot;</span></code>. However, the user is free to change the parameter <code class="docutils literal notranslate"><span class="pre">basis</span></code> to:</p>
+<ul class="simple">
+<li>CDR3_nt (100% CDR3 nucleotide match)</li>
+<li>VDJ_aa (100% amino acid match of full VDJ sequence),</li>
+<li>VDJ_nt (100% nucleotide sequence match of full VDJ sequence),</li>
+<li>V_CDR3_J_aa (100% CDR3 amino acid sequence match and same v_call and j_call)</li>
+<li>V_CDR3_J_nt (100% CDR3 nucleotide match and same v_call and j_call)</li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate overlap layer on full datasets for Convergence layer</span>
+<span class="n">overlap_layer</span><span class="o">&lt;-</span><span class="nf">repertoire_overlap</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s">&quot;CDR3_aa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">overlap_layer</span></code> is a symmetrical <img class="math" src="_images/math/6804df8649f0c07996685c51e663fa404605d946.png" alt="n \times n"/> matrix, where <img class="math" src="_images/math/99f49211b669dacea4a2a99cc84b8955c3537b99.png" alt="n = number\:of\:repertoires"/>. Each entry represents the overlap
+between a repertoire pair. For this layer, the user is free to choose other overlap measures (e.g., Morisita Horn) as long as the
+result is a nxn matrix with similarity scores in the range [0,1].</p>
+</div>
+<div class="section" id="c-subsampling-of-repertoires">
+<span id="subsampling"></span><h3>C. Subsampling of repertoires<a class="headerlink" href="#c-subsampling-of-repertoires" title="Permalink to this headline">¶</a></h3>
+<p>Since multiple immuneREF steps contain computationally intensive calculations, users are encouraged to subsample them to a user-defined
+<code class="docutils literal notranslate"><span class="pre">subsample_size</span></code> (at least for the calculation of the Architecture and k-mer occurrence layers). A repertoire size of 10‘000 sequences is suggested.
+Subsampling may be performed in one of two ways:</p>
+<ul class="simple">
+<li>Picking the x top clones (<code class="docutils literal notranslate"><span class="pre">random</span> <span class="pre">=</span> <span class="pre">FALSE</span></code>)</li>
+<li>Randomly (x random rows are chosen for the analysis) (<code class="docutils literal notranslate"><span class="pre">random</span> <span class="pre">=</span> <span class="pre">TRUE</span></code>)</li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subsample for the ones that are not 10000</span>
+<span class="n">subsample_size</span><span class="o">&lt;-</span><span class="m">10000</span>
+
+<span class="n">list_simulated_repertoires</span><span class="o">&lt;-</span><span class="nf">subset_input_repertoires</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">list_simulated_repertoires</span><span class="p">,</span>
+                           <span class="n">subset_size</span><span class="o">=</span><span class="n">subsample_size</span><span class="p">,</span>
+                           <span class="n">random</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="d-calculation-of-the-remaining-5-features">
+<span id="all-features"></span><h3>D. Calculation of the remaining 5 features<a class="headerlink" href="#d-calculation-of-the-remaining-5-features" title="Permalink to this headline">¶</a></h3>
+<p>The prepared list of repertoires is analyzed using the <code class="docutils literal notranslate"><span class="pre">calc_characteristics()</span></code> function
+and returns a list containing the extracted features for each layer.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate all features for each repertoire</span>
+<span class="n">repertoires_analyzed</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">)){</span>
+  <span class="n">repertoires_analyzed[[repertoire_names[i]]]</span><span class="o">&lt;-</span><span class="nf">calc_characteristics</span><span class="p">(</span>
+                                <span class="n">repertoire_df</span><span class="o">=</span><span class="n">list_simulated_repertoires[[i]]</span><span class="p">,</span>
+                                <span class="n">species</span><span class="o">=</span><span class="n">repertoire_species[i]</span><span class="p">,</span>
+                                <span class="n">receptor</span><span class="o">=</span><span class="n">repertoire_receptor[i]</span><span class="p">,</span>
+                                <span class="n">chain</span><span class="o">=</span><span class="n">repertoire_chain[i]</span><span class="p">,</span>
+                                <span class="n">identifier_rep</span><span class="o">=</span><span class="n">repertoire_names[i]</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Parallelization:</strong> For a larger number of repertoires, it is suggested to parallelize this step. Parallelization may for example be achieved using the R packages foreach, doMC as shown in the
+code example below.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">doMC</span><span class="p">)</span>
+<span class="nf">registerDoMC</span><span class="p">(</span><span class="m">10</span><span class="p">)</span> <span class="c1">#register multicore backend</span>
+
+<span class="c1"># Calculate all features for each repertoire in parallel</span>
+<span class="n">repertoires_analyzed</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">))</span> <span class="o">%dopar%</span> <span class="p">{</span><span class="c1">#</span>
+  <span class="n">repertoires_analyzed_loop</span><span class="o">&lt;-</span><span class="nf">calc_characteristics</span><span class="p">(</span>
+                                <span class="n">repertoire_df</span><span class="o">=</span><span class="n">list_simulated_repertoires[[i]]</span><span class="p">,</span>
+                                <span class="n">species</span><span class="o">=</span><span class="n">repertoire_species[i]</span><span class="p">,</span>
+                                <span class="n">receptor</span><span class="o">=</span><span class="n">repertoire_receptor[i]</span><span class="p">,</span>
+                                <span class="n">chain</span><span class="o">=</span><span class="n">repertoire_chain[i]</span><span class="p">,</span>
+                                <span class="n">identifier_rep</span><span class="o">=</span><span class="n">repertoire_names[i]</span><span class="p">)</span>
+
+  <span class="nf">return</span><span class="p">(</span><span class="n">repertoires_analyzed_loop</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">repertoire_names</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="similarity-score-calculation">
+<span id="feature-similarity"></span><h2>3. Similarity score calculation<a class="headerlink" href="#similarity-score-calculation" title="Permalink to this headline">¶</a></h2>
+<p>Having analyzed the repertoire features, the similarity scores may be calculated for each layer. This is done using the <code class="docutils literal notranslate"><span class="pre">calculate_similarities()</span></code> function for all layers
+except the <code class="docutils literal notranslate"><span class="pre">overlap_layer</span></code> which is already in a similarity matrix format. Further details on the similarity calculation are given in a dedicated chapter (See: <a class="reference internal" href="single_layer_calculation.html#single-layer-calculation"><span class="std std-ref">Determining repertoire similarities</span></a>).
+The required input is:</p>
+<blockquote>
+<div><ul class="simple">
+<li>repertoires_analyzed: The output of the previous section</li>
+<li>vdj_vj_weights: For the germline usage similarity calculation the user can choose which gene usage information to take into account: c(V, D, J, VJ). Default is set to V and J usage (i.e., c(1,0,1,0))</li>
+<li>convergence: Here the user can choose, between overlap (default) and immunosignature layer.</li>
+<li>overlap_layer: In case overlap is used as a convergence measure, the calculated overlap layer is introduced here</li>
+<li>cor_methods: A named vector of length six containing information on which correlation measure should be used (Default: Pearson for all layers)</li>
+</ul>
+</div></blockquote>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate similarities between repertoire for each layer</span>
+<span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">calculate_similarities</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">overlap_layer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This step can again be <strong>parallelized</strong> using the <code class="docutils literal notranslate"><span class="pre">calculate_similarities_parallel()</span></code> function:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate similarities in parallel per layer.</span>
+<span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">calculate_similarities_parallel</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">overlap_layer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="condensing-layers-into-multi-layer-network">
+<span id="condensing-layers"></span><h2>4. Condensing layers into multi-layer network<a class="headerlink" href="#condensing-layers-into-multi-layer-network" title="Permalink to this headline">¶</a></h2>
+<p>After having calculated the similarity relationships between repertoires for each layer, the layers may be combined into a multi-layer network by condensing layers.
+The default method (standard) takes a weighted mean of the similarity scores for each repertoire pair (future versions will include additional methods).
+The layer weights are determined by the user via the <code class="docutils literal notranslate"><span class="pre">weights</span></code> parameter. (See also: <a class="reference internal" href="multi_layer_calculation.html#multi-layer-calculation"><span class="std std-ref">Multi-layer analysis</span></a>)</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate condensed network (here equal weights for each layer)</span>
+<span class="n">cormat</span> <span class="o">&lt;-</span> <span class="nf">condense_layers</span><span class="p">(</span><span class="n">list_single_layers</span><span class="p">,</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;standard&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualization-of-results">
+<span id="visualization"></span><h2>5. Visualization of results<a class="headerlink" href="#visualization-of-results" title="Permalink to this headline">¶</a></h2>
+<p>The resulting immuneREF layers can be analyzed using various tools provided in the package and described in the manuscript. These include:</p>
+<ul class="simple">
+<li>Drawing clustered heatmaps for each layer and the condensed network</li>
+<li>Determine network features of similarity layers</li>
+<li>Analyze global similarity score distribution (many-to-many)</li>
+<li>Identify most and least similar repertoires per category via local similarity</li>
+<li>Six-dimensional many-to-one comparison of repertoires to reference repertoires.</li>
+<li>Classical repertoire analysis of repertoires based on the analysis in the repertoire feature extraction (<a class="reference internal" href="#all-features"><span class="std std-ref">D. Calculation of the remaining 5 features</span></a>).</li>
+</ul>
+<p>A detailed overview of the output produced by the tutorial code below is found at <a class="reference internal" href="immuneREF_output_analysis.html#immuneref-output-analysis"><span class="std std-ref">Analysis of immuneREF output</span></a></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># Draw heatmap of immuneREF layers</span>
+<span class="c1">###</span>
+
+<span class="c1"># Make list of all layers you want to plot heatmaps for</span>
+<span class="n">list_all_layers</span> <span class="o">&lt;-</span> <span class="n">list_single_layers</span>
+<span class="n">list_all_layers[[</span><span class="s">&quot;Condensed&quot;</span><span class="n">]]</span> <span class="o">&lt;-</span> <span class="n">cormat</span>
+
+
+<span class="c1"># Prepare list with heatmap annotations containing categories and colors</span>
+<span class="n">annotation_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">annotation_list[[</span><span class="s">&quot;categories&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Species</span><span class="o">=</span><span class="n">input_data_ref</span><span class="o">$</span><span class="n">species</span><span class="p">,</span>
+                                            <span class="n">Receptor</span> <span class="o">=</span> <span class="n">input_data_ref</span><span class="o">$</span><span class="n">receptor</span><span class="p">)</span>
+
+<span class="n">annotation_list[[</span><span class="s">&quot;colors&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">Species</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">mm</span><span class="o">=</span><span class="s">&#39;#ffffbf&#39;</span><span class="p">,</span><span class="n">hs</span><span class="o">=</span><span class="s">&#39;#fc8d59&#39;</span><span class="p">),</span>
+                                  <span class="n">Receptor</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">ig</span><span class="o">=</span><span class="s">&#39;#91bfdb&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># For each entry (immuneREF layer) plot a heatmap</span>
+<span class="nf">print_heatmap_sims</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                  <span class="n">annotation_list</span><span class="o">=</span><span class="n">annotation_list</span><span class="p">,</span>
+                  <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+
+
+<span class="c1">## Bonus: calculate network features of condensed immuneREF layer</span>
+<span class="n">network_features</span> <span class="o">&lt;-</span> <span class="nf">analyze_similarity_network</span><span class="p">(</span><span class="n">cormat</span><span class="p">)</span>
+
+<span class="c1">###</span>
+<span class="c1"># Draw Global Similarity Plots of immuneREF layers</span>
+<span class="c1">###</span>
+
+<span class="c1"># Define relevant subsets for splits</span>
+<span class="n">categories_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">categories_list[[</span><span class="s">&quot;categories&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">input_data_ref</span>
+<span class="n">categories_list[[</span><span class="s">&quot;color&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="s">&#39;#91bfdb&#39;</span><span class="p">,</span><span class="s">&#39;#ffffbf&#39;</span><span class="p">)</span>
+<span class="n">categories_list[[</span><span class="s">&quot;subset&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="s">&quot;species&quot;</span>
+
+<span class="c1">#Plot global similarity</span>
+<span class="nf">print_global_similarity</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                      <span class="n">categories_list</span> <span class="o">=</span> <span class="n">categories_list</span><span class="p">,</span>
+                      <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+
+<span class="c1">###</span>
+<span class="c1"># Plot local similarity per category and identify max and min locally similar repertoires</span>
+<span class="c1">##</span>
+<span class="n">max_min_reps</span><span class="o">&lt;-</span><span class="nf">print_local_similarity</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_all_layers</span><span class="p">,</span>
+                      <span class="n">categories_list</span> <span class="o">=</span> <span class="n">categories_list</span><span class="p">,</span>
+                      <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+
+
+<span class="c1">###</span>
+<span class="c1"># Radar plot to visualize similarity across all 6 layers</span>
+<span class="c1">##</span>
+<span class="n">radar_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">radar_list[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">radar_list[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">radar_list[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">radar_list[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+
+<span class="n">comparison_list</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">roi</span><span class="o">=</span><span class="nf">names</span><span class="p">(</span><span class="n">radar_list</span><span class="p">),</span>
+  <span class="n">roi_names</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span>
+    <span class="s">&quot;Murine A&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Murine B&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Human A&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Human B&quot;</span><span class="p">),</span>
+  <span class="n">ref</span><span class="o">=</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="p">,</span>
+  <span class="n">plot_names</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Murine A&quot;</span><span class="p">,</span> <span class="s">&quot;Murine B&quot;</span><span class="p">,</span><span class="s">&quot;Human A&quot;</span><span class="p">,</span><span class="s">&quot;Human B&quot;</span><span class="p">),</span>
+  <span class="n">colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;grey&quot;</span><span class="p">,</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="s">&quot;green&quot;</span><span class="p">))</span>
+
+
+<span class="nf">print_repertoire_radar</span><span class="p">(</span><span class="n">list_similarity_matrices</span><span class="o">=</span><span class="n">list_single_layers</span><span class="p">,</span>
+  <span class="n">to_compare</span><span class="o">=</span><span class="n">comparison_list</span><span class="p">,</span>
+  <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">,</span>
+  <span class="n">name_plot</span><span class="o">=</span><span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
+
+
+<span class="c1">####</span>
+<span class="c1"># Classical repertoire analysis of maximally and minimally similar repertoires per category</span>
+<span class="c1">####</span>
+
+<span class="c1"># Print classic repertoires comparing max and min locally similar plots for:</span>
+<span class="c1"># Simulated murine igh repertoires</span>
+<span class="n">mm_igh</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">mm_igh[[</span><span class="s">&quot;max&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">mm_igh[[</span><span class="s">&quot;min&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+
+<span class="nf">print_repertoire_comparison</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">mm_igh</span><span class="p">,</span><span class="n">name_plots</span><span class="o">=</span><span class="s">&quot;mm_igh&quot;</span><span class="p">,</span><span class="n">aa_freq_length</span><span class="o">=</span><span class="m">14</span><span class="p">,</span><span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Simulated human igh repertoires</span>
+<span class="n">hs_igh</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;max&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;min&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+
+<span class="nf">print_repertoire_comparison</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">hs_igh</span><span class="p">,</span>
+  <span class="n">name_plots</span><span class="o">=</span><span class="s">&quot;hs_igh&quot;</span><span class="p">,</span>
+  <span class="n">aa_freq_length</span><span class="o">=</span><span class="m">17</span><span class="p">,</span>
+  <span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flowchart-immuneref-workflow">
+<span id="flowchart"></span><h2>6. Flowchart immuneREF workflow<a class="headerlink" href="#flowchart-immuneref-workflow" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="_images/flowchart.png" src="_images/flowchart.png" />
+</div>
+<p>A step-by-step breakdown of the immuneREF analysis workflow.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>AIRR Community Standardized Representations for Annotated Immune Repertoires. Vander Heiden JA et al., Front Immunol (2018), doi: 10.3389/fimmu.2018.02206, <a class="reference external" href="https://github.com/airr-community/airr-standards">https://github.com/airr-community/airr-standards</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="single_feature_analysis.html" class="btn btn-neutral float-right" title="immuneREF feature layers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CRW
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>immuneREF: Reference-based similarity comparison of immune repertoires &mdash; immuneREF 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing immuneREF" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> immuneREF
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">In-depth Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_feature_analysis.html">immuneREF feature layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_layer_calculation.html">Determining repertoire similarities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="immuneREF_output_analysis.html">Analysis of immuneREF output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">immuneREF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>immuneREF: Reference-based similarity comparison of immune repertoires</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="immuneref-reference-based-similarity-comparison-of-immune-repertoires">
+<h1>immuneREF: Reference-based similarity comparison of immune repertoires<a class="headerlink" href="#immuneref-reference-based-similarity-comparison-of-immune-repertoires" title="Permalink to this headline">¶</a></h1>
+<p>immuneREF allows the analysis of repertoire similarity on a one-to-one, one-to-many and many-to-many scale across repertoire
+features ranging from fully sequence- to fully frequency-dependent ones.</p>
+<div class="figure" id="id1">
+<img alt="_images/immuneREF_Figures-01.png" src="_images/immuneREF_Figures-01.png" />
+<p class="caption"><span class="caption-text">The immuneREF workflow combines the analysis of a range of features to calculate a multidimensional similarity network of immune repertoires. This enables the identifciation
+of both, global repertoire similarity (many-to-many, one-to-many) and similarity to a reference repertoires (many-to-one, one-to-one)</span></p>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing immuneREF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-immuneref">Install immuneREF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#quickstart-chapter">Quickstart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">In-depth Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#the-workflow-of-the-quickstart-analysis">The workflow of the quickstart analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#input-format">1. Input format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#analysis-of-single-features">2. Analysis of single features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#similarity-score-calculation">3. Similarity score calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#condensing-layers-into-multi-layer-network">4. Condensing layers into multi-layer network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#visualization-of-results">5. Visualization of results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#flowchart-immuneref-workflow">6. Flowchart immuneREF workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="single_feature_analysis.html">immuneREF feature layers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="single_feature_analysis.html#the-feature-layers-of-immuneref-overview">The feature layers of immuneREF (Overview)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_feature_analysis.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="single_layer_calculation.html">Determining repertoire similarities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="single_layer_calculation.html#similarity-per-feature">Similarity per feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_layer_calculation.html#table-similarity-calculation-per-feature">Table similarity calculation per feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_layer_calculation.html#similarity-calculation-for-all-features">Similarity calculation for all features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_layer_calculation.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi_layer_calculation.html">Multi-layer analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi_layer_calculation.html#condensing-multiple-layers">Condensing multiple layers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="immuneREF_output_analysis.html">Analysis of immuneREF output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="immuneREF_output_analysis.html#analyzing-similarity-networks">Analyzing Similarity Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="immuneREF_output_analysis.html#bonus-network-characteristics">Bonus: Network characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="immuneREF_output_analysis.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installing immuneREF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CRW
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
