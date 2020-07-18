@@ -462,16 +462,20 @@ The layer weights are determined by the user via the <code class="docutils liter
 <span class="c1"># Print classic repertoires comparing max and min locally similar plots for:</span>
 <span class="c1"># Simulated murine igh repertoires</span>
 <span class="n">mm_igh</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
-<span class="n">mm_igh[[</span><span class="s">&quot;max&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
-<span class="n">mm_igh[[</span><span class="s">&quot;min&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="c1">#add max locally similar repertoire</span>
+<span class="n">mm_igh[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="c1">#add min locally similar repertoire</span>
+<span class="n">mm_igh[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;mm_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
 
 <span class="nf">print_repertoire_comparison</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">mm_igh</span><span class="p">,</span><span class="n">name_plots</span><span class="o">=</span><span class="s">&quot;mm_igh&quot;</span><span class="p">,</span><span class="n">aa_freq_length</span><span class="o">=</span><span class="m">14</span><span class="p">,</span><span class="n">path_figure</span><span class="o">=</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># Simulated human igh repertoires</span>
 <span class="n">hs_igh</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
-<span class="n">hs_igh[[</span><span class="s">&quot;max&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
-<span class="n">hs_igh[[</span><span class="s">&quot;min&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="c1">#add max locally similar repertoire</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_2_0__0_0_0_A&quot;</span><span class="n">]]</span>
+<span class="c1">#add min locally similar repertoire</span>
+<span class="n">hs_igh[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span><span class="o">&lt;-</span><span class="n">repertoires_analyzed[[</span><span class="s">&quot;hs_ig_h_4_0__0_0_0_A&quot;</span><span class="n">]]</span>
 
 <span class="nf">print_repertoire_comparison</span><span class="p">(</span><span class="n">list_repertoires</span><span class="o">=</span><span class="n">hs_igh</span><span class="p">,</span>
   <span class="n">name_plots</span><span class="o">=</span><span class="s">&quot;hs_igh&quot;</span><span class="p">,</span>
