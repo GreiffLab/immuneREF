@@ -3,7 +3,7 @@
 Overview
 ========
 
-ImmuneREF allows the analysis of repertoire similarity on a one-to-one, one-to-many and many-to-many scale across repertoire features ranging from fully sequence- to fully frequency-dependent ones. This results in a thorough characterisation of repertoire datasets for applications ranging from quality control to the search for disease-specific repertoire characteristics.
+immuneREF is an R package that enables the analysis of repertoire similarity on a one-to-one, one-to-many and many-to-many scale across repertoire features ranging from fully sequence- to fully frequency-dependent features. This results in a thorough characterization of repertoire datasets for applications ranging from quality control to the search for disease-associated repertoire characteristics.
 
 Documentation: https://immuneREF.readthedocs.io
 
