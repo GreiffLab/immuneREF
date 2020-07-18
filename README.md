@@ -19,6 +19,25 @@ To be able to install immuneREF, the following prerequisites need to be fulfille
 1.  R >= 3.4.0.
 2.  Imports: kebabs, igraph, Biostrings, stringdist, vegan, doMC, foreach, dplyr, ggplot2, ggiraphExtra, grid, ComplexHeatmap
 
+```r 
+    # Check R version
+        version[['version.string']]
+
+    # Install required R packages hosted on CRAN
+        install.packages(c("ggplot2","igraph","stringdist","vegan","doMC","foreach","dplyr","grid"))
+
+    # Install required R packages hosted on Bioconductor 
+    
+        #If R version ≥ "4.0""
+        if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+    
+        BiocManager::install(c("Biostrings","kebabs","ComplexHeatmap"))
+    
+        #If R version < "4.0"
+        source("https://bioconductor.org/biocLite.R")
+        biocLite(c("Biostrings","kebabs","ComplexHeatmap"))
+```
 
 Installing immuneREF
 --------------------
