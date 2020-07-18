@@ -351,16 +351,16 @@ A detailed overview of the output produced by the tutorial code below is found a
     # Print classic repertoires comparing max and min locally similar plots for:
     # Simulated murine igh repertoires
     mm_igh<-list()
-    mm_igh[["max"]]<-repertoires_analyzed[["mm_ig_h_2_0__0_0_0_A"]]
-    mm_igh[["min"]]<-repertoires_analyzed[["mm_ig_h_4_0__0_0_0_A"]]
+    mm_igh[["mm_ig_h_2_0__0_0_0_A"]]<-repertoires_analyzed[["mm_ig_h_2_0__0_0_0_A"]]
+    mm_igh[["mm_ig_h_4_0__0_0_0_A"]]<-repertoires_analyzed[["mm_ig_h_4_0__0_0_0_A"]]
     
     print_repertoire_comparison(list_repertoires=mm_igh,name_plots="mm_igh",aa_freq_length=14,path_figure="figures")
     
     
     # Simulated human igh repertoires
     hs_igh<-list()
-    hs_igh[["max"]]<-repertoires_analyzed[["hs_ig_h_2_0__0_0_0_A"]]
-    hs_igh[["min"]]<-repertoires_analyzed[["hs_ig_h_4_0__0_0_0_A"]]
+    hs_igh[["hs_ig_h_2_0__0_0_0_A"]]<-repertoires_analyzed[["hs_ig_h_2_0__0_0_0_A"]]
+    hs_igh[["hs_ig_h_4_0__0_0_0_A"]]<-repertoires_analyzed[["hs_ig_h_4_0__0_0_0_A"]]
     
     print_repertoire_comparison(list_repertoires=hs_igh,
       name_plots="hs_igh",
