@@ -1,0 +1,130 @@
+.. _network_analysis:
+
+################
+Network Analysis
+################
+
+.. toctree::
+   :maxdepth: 2
+
+
+Analyzing Similarity Network
+============================
+
+Be it a single layer or multi layer similarity network the analysis of the network structure is a central goal of immuneNET. 
+Here we provide an overview of several approaches to analyze the immuneNET similarity networks.
+
+
+Heatmap
+=======
+
+A good first step is to visualize the similarity networks as heatmaps. 
+
+.. code-block:: r
+    
+    #TODO simple ComplexHeatmap code. until then: pheatmap 
+    library(pheatmap)
+    pheatmap(similarity_network,scale='row')
+
+
+.. figure:: /images/immuneNET_fig_heatmap.png
+    :width: 300px
+    :align: center
+    :height: 300px
+    :alt: alternate text
+    :figclass: align-center
+
+    An example heatmap clustering repertoires based on their similarity
+
+
+
+Network Graph
+=============
+
+
+.. code-block:: r
+    
+    TODO igraph/cytoscape pipeline
+
+
+Network Features  
+================
+
+In an initial step we analyze the main network features of the similarity network. The ``analyze_similarity_network`` function returns a list of network features.
+
+.. code-block:: r
+    
+    #Calculate Network Features
+    network_features <- analyze_similarity_network(similarity_network)
+
+
+
+Local Repertoire Similarity
+===========================
+
+To determine how representative single nodes we developed local similarity based on [1]_, introducing the similarity repertoire number. It is calculated by dividing the mean similarity of a given node to its neighbors by the node degree xxREF. similarityrepertoire = NodeStrengthNodeStrength
+
+xxxMOTIVATION: Which nodes are well connected in a significant way? (different thresholds for edges: at low threshold all are connected, similarity is just mean correlation, but as we increase threshold only high similarities survive while others fall off) (¿Population wide similarity measure?)
+
+.. code-block:: r
+
+    #RCODE local similarity TODO
+    #ADD NORMALIZATION FOR LABEL OCCURRENCE: IF THERE ARE MORE TRBs vs IGHs for example the TRBs are gonna have a higher local similarity. maybe by cluster size
+
+ftp_data/3_SLE/S18081001047701.gz
+
+Global Repertoire Similarity
+============================
+
+The similarity of repertoires on a network wide level was determined by evaluating mean similarities...  
+
+
+
+Clustering
+========== 
+
+The similarity of repertoires on a network wide level was determined using a clustering approach.
+Clustering based on edge betweenness (Girvan Newman algorithm)
+
+
+The clustering is based on [2]_ xxx
+
+.. code-block:: r
+
+    #RCODE Clustering TODO
+
+
+
+
+
+
+Cluster evaluation / Cluster purity
+===================================
+
+The similarity of repertoires on a network wide level was determined using a clustering approach 
+How good is our clustering? How do the layers differ in cluster purity?
+Given the feature of one node in any cluster of the network, how likely are we (on average) to guess the feature of any other node in that cluster?    
+
+
+
+Clustering evaluation based on Meysman 2018                    
+===========================================
+
+Based on Meysman’s publication ”On the viability of unsupervised T-cell receptor sequence clustering for epitope preference” we defined clustering quality based on Retention, Purity and Consistency (see Figure 4.2).                            
+Retention (formerly Recall): Number of repertoires that are non-isolated
+Consistency (formerly Accuracy): True clusters are assigned to labels if the label dominates a cluster and it contains most repertoires of the label. Consistency is the percentage of repertoires that are in their true cluster.                    
+Purity (formerly Precision): For each cluster the most common label is considered a true positive, irrespective of its co-occurrence in other clusters. Purity is given by the sum of these ’true positives’ divided by number of non-isolate reps.
+Clustering score: mean(Retention, Consistency, Purity)
+
+
+
+Clustering evaluation via Rand index    
+====================================
+
+The Rand index measures the similarity between two data clusterings. The adjusted Rand index further adjusts for the random chance of grouping elements. We included this form of cluster analysis using by evaluating the adjusted rand index between the true labels and the assigned cluster using the adj.rand.index function of the R-package fossil. (used in https://www.nature.com/articles/s41592- 018-0229-2)   
+
+     
+
+
+.. [1] NodeStrength, Ref., The Journal, 7, 132-136 (19XX).
+.. [2] Cluster, Ref., The Journal, 7, 132-136 (19XX).
