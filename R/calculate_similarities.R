@@ -16,7 +16,7 @@ calculate_similarities <- function(repertoires_analyzed,overlap_layer="",vdj_vj_
   list_single_layers[["Diversity"]]<-make_cormat(repertoires_analyzed,weights_overall=c(1,0,0,0,0,0),correlation_method=cor_methods["Diversity"])
   list_single_layers[["AAfreq"]]<-make_cormat(repertoires_analyzed,weights_overall=c(0,1,0,0,0,0),correlation_method=cor_methods["AAfreq"])
   list_single_layers[["Architecture"]]<-make_cormat(repertoires_analyzed,weights_overall=c(0,0,1,0,0,0),correlation_method=cor_methods["Architecture"])
-  if(convergence=="overlap" & class(overlap_layer)!="character"){
+  if(convergence=="overlap" & overlap_layer[1]!=""){
     list_single_layers[["Convergence"]]<-overlap_layer
   }else{
     list_single_layers[["Convergence"]]<-make_cormat(repertoires_analyzed,weights_overall=c(0,0,0,1,0,0),correlation_method=cor_methods["Convergence"])
