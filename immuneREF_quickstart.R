@@ -4,6 +4,6 @@ library(immuneREF)
 similarity_networks <- immuneREF_quickstart(repertoire_list = tutorial_repertoires)
 
 # Calculate network features and plot heatmap of repertoire similarities(Step 4)
-network_features <- analyze_similarity_network(multilayer_network)
+network_features <- analyze_similarity_network(similarity_networks)
 
-pheatmap::pheatmap(multilayer_network,scale='row')
+pheatmap::pheatmap(similarity_networks,scale='row')
