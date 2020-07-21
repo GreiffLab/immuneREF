@@ -86,7 +86,10 @@ the datasets and serves as a reference for the analysis of isolated categories d
 
 .. code-block:: r
 
-    #Set working directory
+    # Load immuneREF package
+    library(immuneREF)
+
+    # Set working directory
     setwd(PATH)
     
     # Load datasets (check for compatibility, 
@@ -178,14 +181,14 @@ and returns a list containing the extracted features for each layer.
                                   identifier_rep=repertoire_names[i])
   }
   
-**Parallelization:** For a larger number of repertoires, it is suggested to parallelize this step. Parallelization may for example be achieved using the R packages foreach, doMC as shown in the 
+**Parallelization:** For a larger number of repertoires, it is suggested to parallelize this step. Parallelization may for example be achieved using the R packages foreach, doParallel as shown in the 
 code example below.
 
 .. code-block:: r
 
   library(foreach)
-  library(doMC)
-  registerDoMC(10) #register multicore backend
+  library(doParallel)
+  registerDoParallel(10) #register multicore backend
 
   # Calculate all features for each repertoire in parallel
   repertoires_analyzed<-foreach(i=1:length(list_simulated_repertoires)) %dopar% {#
@@ -219,14 +222,14 @@ The required input is:
 
 .. code-block:: r
 
-    #Calculate similarities between repertoire for each layer
-    list_single_layers<-calculate_similarities(repertoires_analyzed,overlap_layer)
+    # Calculate similarities between repertoire for each layer
+    list_single_layers<-calculate_similarities(repertoires_analyzed=repertoires_analyzed,overlap_layer=overlap_layer)
 
 This step can again be **parallelized** using the ``calculate_similarities_parallel()`` function:
 
 .. code-block:: r
 
-    #Calculate similarities in parallel per layer.
+    # Calculate similarities in parallel per layer.
     list_single_layers<-calculate_similarities_parallel(repertoires_analyzed,overlap_layer)
 
 
@@ -242,7 +245,7 @@ The layer weights are determined by the user via the ``weights`` parameter. (See
 
 .. code-block:: r
 
-    #Calculate condensed network (here equal weights for each layer)
+    # Calculate condensed network (here equal weights for each layer)
     cormat <- condense_layers(list_single_layers,
         weights = c(1,1,1,1,1,1),
         method = "standard")
@@ -271,6 +274,9 @@ A detailed overview of the output produced by the tutorial code below is found a
     ###
     # Draw heatmap of immuneREF layers
     ###
+
+    # Create folder to save figures in
+    dir.create("figures")
     
     # Make list of all layers you want to plot heatmaps for
     list_all_layers <- list_single_layers
