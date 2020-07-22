@@ -16,14 +16,18 @@ Imports: kebabs,
     Biostrings,
     stringdist, 
     vegan,
-    doMC,
+    doParallel,
     foreach,
     dplyr,
     ggplot2,
     ggiraphExtra,
     grid,
-    ComplexHeatmap
+    ComplexHeatmap,
+    pheatmap
 License: GPL-3
+URL: https://immuneREF.readthedocs.io
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
+
+
