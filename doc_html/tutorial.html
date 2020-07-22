@@ -230,7 +230,10 @@ and notifies the user where adjustments might be necessary. Note that this funct
 <span id="metadata"></span><h3>A. Setting up of reference dataframe.<a class="headerlink" href="#a-setting-up-of-reference-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>First, we set up a reference dataframe that contains meta-information for each repertoire that is to be analyzed. This dataframe will summarize
 the datasets and serves as a reference for the analysis of isolated categories downstream.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set working directory</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load immuneREF package</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">immuneREF</span><span class="p">)</span>
+
+<span class="c1"># Set working directory</span>
 <span class="nf">setwd</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
 
 <span class="c1"># Load datasets (check for compatibility,</span>
@@ -309,11 +312,11 @@ and returns a list containing the extracted features for each layer.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Parallelization:</strong> For a larger number of repertoires, it is suggested to parallelize this step. Parallelization may for example be achieved using the R packages foreach, doMC as shown in the
+<p><strong>Parallelization:</strong> For a larger number of repertoires, it is suggested to parallelize this step. Parallelization may for example be achieved using the R packages foreach, doParallel as shown in the
 code example below.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">doMC</span><span class="p">)</span>
-<span class="nf">registerDoMC</span><span class="p">(</span><span class="m">10</span><span class="p">)</span> <span class="c1">#register multicore backend</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="m">10</span><span class="p">)</span> <span class="c1">#register multicore backend</span>
 
 <span class="c1"># Calculate all features for each repertoire in parallel</span>
 <span class="n">repertoires_analyzed</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">list_simulated_repertoires</span><span class="p">))</span> <span class="o">%dopar%</span> <span class="p">{</span><span class="c1">#</span>
@@ -345,12 +348,12 @@ The required input is:</p>
 <li>cor_methods: A named vector of length six containing information on which correlation measure should be used (Default: Pearson for all layers)</li>
 </ul>
 </div></blockquote>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate similarities between repertoire for each layer</span>
-<span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">calculate_similarities</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">overlap_layer</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate similarities between repertoire for each layer</span>
+<span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">calculate_similarities</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="o">=</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">overlap_layer</span><span class="o">=</span><span class="n">overlap_layer</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This step can again be <strong>parallelized</strong> using the <code class="docutils literal notranslate"><span class="pre">calculate_similarities_parallel()</span></code> function:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate similarities in parallel per layer.</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate similarities in parallel per layer.</span>
 <span class="n">list_single_layers</span><span class="o">&lt;-</span><span class="nf">calculate_similarities_parallel</span><span class="p">(</span><span class="n">repertoires_analyzed</span><span class="p">,</span><span class="n">overlap_layer</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -360,7 +363,7 @@ The required input is:</p>
 <p>After having calculated the similarity relationships between repertoires for each layer, the layers may be combined into a multi-layer network by condensing layers.
 The default method (standard) takes a weighted mean of the similarity scores for each repertoire pair (future versions will include additional methods).
 The layer weights are determined by the user via the <code class="docutils literal notranslate"><span class="pre">weights</span></code> parameter. (See also: <a class="reference internal" href="multi_layer_calculation.html#multi-layer-calculation"><span class="std std-ref">Multi-layer analysis</span></a>)</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate condensed network (here equal weights for each layer)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate condensed network (here equal weights for each layer)</span>
 <span class="n">cormat</span> <span class="o">&lt;-</span> <span class="nf">condense_layers</span><span class="p">(</span><span class="n">list_single_layers</span><span class="p">,</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;standard&quot;</span><span class="p">)</span>
@@ -382,6 +385,9 @@ The layer weights are determined by the user via the <code class="docutils liter
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
 <span class="c1"># Draw heatmap of immuneREF layers</span>
 <span class="c1">###</span>
+
+<span class="c1"># Create folder to save figures in</span>
+<span class="nf">dir.create</span><span class="p">(</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
 
 <span class="c1"># Make list of all layers you want to plot heatmaps for</span>
 <span class="n">list_all_layers</span> <span class="o">&lt;-</span> <span class="n">list_single_layers</span>

@@ -167,10 +167,10 @@
 <span class="c1"># Calculate simularity networks for single features (Step 1 and 2)</span>
 <span class="n">similarity_networks</span> <span class="o">&lt;-</span> <span class="nf">immuneREF_quickstart</span><span class="p">(</span><span class="n">repertoire_list</span> <span class="o">=</span> <span class="n">tutorial_repertoires</span><span class="p">)</span>
 
-<span class="c1"># Calculate network features and plot heatmap of repertoire similarities(Step 4)</span>
-<span class="n">network_features</span> <span class="o">&lt;-</span> <span class="nf">analyze_similarity_network</span><span class="p">(</span><span class="n">multilayer_network</span><span class="p">)</span>
+<span class="c1"># Calculate network features and plot heatmap of repertoire similarities (condensed network) (Step 4)</span>
+<span class="n">network_features</span> <span class="o">&lt;-</span> <span class="nf">analyze_similarity_network</span><span class="p">(</span><span class="n">similarity_networks[[</span><span class="s">&quot;Condensed&quot;</span><span class="n">]]</span><span class="p">)</span>
 
-<span class="n">pheatmap</span><span class="o">::</span><span class="nf">pheatmap</span><span class="p">(</span><span class="n">multilayer_network</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="s">&#39;row&#39;</span><span class="p">)</span>
+<span class="n">pheatmap</span><span class="o">::</span><span class="nf">pheatmap</span><span class="p">(</span><span class="n">similarity_networks[[</span><span class="s">&quot;Condensed&quot;</span><span class="n">]]</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="s">&#39;row&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
