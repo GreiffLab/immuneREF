@@ -24,7 +24,7 @@ To be able to install immuneREF, the following prerequisites need to be fulfille
         version[['version.string']]
 
     # Install required R packages hosted on CRAN
-        install.packages(c("ggplot2","igraph","stringdist","vegan","doMC","foreach","dplyr","grid"))
+        install.packages(c("ggplot2","igraph","stringdist","vegan","doParallel","foreach","dplyr","grid"))
 
     # Install required R packages hosted on Bioconductor 
     
@@ -80,8 +80,8 @@ immueREF_quickstart.R, provides a simple example of an immuneREF analysis that i
     similarity_networks <- immuneREF_quickstart(repertoire_list = tutorial_repertoires)
     
     # Calculate network features and plot heatmap of repertoire similarities
-    network_features <- analyze_similarity_network(multilayer_network)
+    network_features <- analyze_similarity_network(similarity_networks[["Condensed"]])
     
-    pheatmap::pheatmap(multilayer_network,scale='row')
+    pheatmap::pheatmap(similarity_networks[["Condensed"]],scale='row')
 
 ```
