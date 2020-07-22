@@ -17,7 +17,7 @@ To be able to run the code, the following prerequisites should be fulfilled:
     * Biostrings
     * stringdist 
     * vegan
-    * doMC
+    * doParallel
     * foreach
     * dplyr
     * grid
@@ -31,7 +31,7 @@ To be able to run the code, the following prerequisites should be fulfilled:
         version[['version.string']]
 
     # Install required R packages hosted on CRAN
-        install.packages(c("ggplot2","igraph","stringdist","vegan","doMC","foreach","dplyr","grid"))
+        install.packages(c("ggplot2","igraph","stringdist","vegan","doParallel","foreach","dplyr","grid"))
 
     # Install required R packages hosted on Bioconductor 
     
