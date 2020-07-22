@@ -53,7 +53,7 @@ Installation via GitHub:
     # Install the devtools package
     install.packages("devtools")
     
-    # Load devtools and install immuneSIM from github 
+    # Load devtools and install immuneREF from github 
     library(devtools)
     install_github("GreiffLab/immuneREF")
     
