@@ -110,7 +110,7 @@ The ``calc_characteristics`` already calculates a basic immunosignature layer ba
         immunosignature_layer <- make_cormat(repertoires_analyzed, weights_overall = c(0,0,0,1,0,0))
 
 
-Additionally, the ``calc_characterstics()`` function has an additional parameter ``models`` which allows the user to read-in a list of ML models compatible with the ``kebabs::predict()`` function for the calculation of the immunosignature feature.
+Additionally, the ``calc_characterstics()`` function has an additional parameter ``models`` which allows the user to read-in a list of ML models compatible with the kebabs function``predict()`` for the calculation of the immunosignature feature.
 
 
 
@@ -144,7 +144,32 @@ This analysis can be performed all in one or in separate steps per single layer 
                 
         save(repertoires_analyzed,file = "repertoires_analyzed")
 
+
+.. _new_species:
+
+Running immuneREF on species not yet included
+----------------------------------------------
+
+immuneREF is currently limited to the analysis of human ("hs") and mouse ("mm") repertoires. For the analysis of additional species
+the extension of ``list_germline_genes`` needs to be extend to include germline genes of these species.
+Once the ``list_germline_genes`` has been extended by information on the species, the species can be specified in the ``calc_characteristics()`` function via the ``species`` parameter.
+
+.. code-block:: r
     
+        #Example process to include new VDJ information for the analysis of IgH repertoires of speciesX
+
+        #Dataframe containing V-gene information on new species
+        df_species_VDJ<-list()
+        df_species_VDJ[["V"]] <- data.frame(gene=c("IGHV1","IGHV2"),allele="01",sequence=c("gattaca","acattag"),species="speciesX",frequency_uniform=c(0.5,0.5), frequency=c(0.6,0.4))
+        df_species_VDJ[["D"]] <- data.frame(gene=c("IGHD1","IGHD2"),allele="01",sequence=c("gat","tac"),species="speciesX",frequency_uniform=c(0.5,0.5), frequency=c(0.6,0.4))
+        df_species_VDJ[["J"]] <- data.frame(gene=c("IGHJ1","IGHJ2"),allele="01",sequence=c("aca","tta"),species="speciesX",frequency_uniform=c(0.5,0.5), frequency=c(0.6,0.4))
+
+        # Extending list_germline_genes
+        list_germline_genes[["speciesX"]][["ig"]][["h"]] <- df_species_VDJ
+
+
+
+
 
 .. _reference_chp_layer:
 
