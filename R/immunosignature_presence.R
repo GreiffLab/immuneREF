@@ -7,7 +7,7 @@
   perc_classification_list<-list()
   for(i in 1:length(models)){
     model<-models[[i]]
-    test_set<-Biostrings::DNAStringSet(repertoire_df[,"junction"])
+    test_set<-Biostrings::DNAStringSet(repertoire_df$junction)
     pred <- kebabs::predict(model, test_set)
     perc_class<-table(pred)[[1]]/sum(table(pred))
     #percPrivate in case of publicprivate model
