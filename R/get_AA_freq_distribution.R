@@ -15,7 +15,8 @@
   list_AA_freqs_per_position<-list()
   for(i in 1:length(unique_lengths)){
     curr_length<-unique_lengths[[i]]
-    curr_seqs<-as.character(repertoire_df[nchar(as.character(repertoire_df[,"junction_aa"]))==curr_length,"junction_aa"])
+    df_subset <- repertoire_df[nchar(as.character(repertoire_df$junction_aa))==curr_length,]
+    curr_seqs<-as.character(df_subset$junction_aa)
 
     list_AA_freqs_per_position_temp<-list()
     #check whether there are seqs of this length if yeas calc positional frequences
