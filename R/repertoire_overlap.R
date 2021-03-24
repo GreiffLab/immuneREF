@@ -12,7 +12,7 @@ repertoire_overlap <- function(list_simulated_repertoires, basis="CDR3_aa"){
   #calculates the overlap between every pair of repertoires based on either CDR3 aa,nt or VDJ aa,nt. Default (CDR3 a.a.)
   #output: matrix of every pairwise comparison
   intersect_percentage_function <- function(x,y){
-    c(length(intersect(x,y)))/mean(c(length(x), length(y)))
+    c(length(intersect(x,y)))/min(c(length(x), length(y)))
   }
 
 
