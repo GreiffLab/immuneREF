@@ -132,21 +132,16 @@ max_min_reps<-print_local_similarity(list_similarity_matrices=list_all_layers,
 # Radar plot to visualize similarity across all 6 layers
 ##
 radar_list<-list()
-radar_list[["mm_ig_h_2_0__0_0_0_A"]]<-repertoires_analyzed[["mm_ig_h_2_0__0_0_0_A"]]
-radar_list[["mm_ig_h_4_0__0_0_0_A"]]<-repertoires_analyzed[["mm_ig_h_4_0__0_0_0_A"]]
-radar_list[["hs_ig_h_2_0__0_0_0_A"]]<-repertoires_analyzed[["hs_ig_h_2_0__0_0_0_A"]]
-radar_list[["hs_ig_h_4_0__0_0_0_A"]]<-repertoires_analyzed[["hs_ig_h_4_0__0_0_0_A"]]
+radar_list[["category"]]<-c("Murine A","Murine B","Human A","Human B")
+radar_list[["roi"]]<-c("mm_ig_h_2_0__0_0_0_A","mm_ig_h_4_0__0_0_0_A","hs_ig_h_2_0__0_0_0_A","hs_ig_h_4_0__0_0_0_A")
+radar_list[["label"]]<-c("Murine A","Murine B","Human A","Human B")
+radar_list[["colors"]]<-c("grey","blue",'red',"green")
 
-comparison_list<-list(roi=names(radar_list),
-  roi_names=c(
-    "Murine A",
-    "Murine B",
-    "Human A",
-    "Human B"),
+comparison_list<-list(roi=radar_list[["roi"]],
+  roi_names=radar_list[["category"]],
   ref="mm_ig_h_2_0__0_0_0_A",
-  plot_names=c("Murine A", "Murine B","Human A","Human B"),
-  colors=c("grey","blue",'red',"green"))
-
+  plot_names=radar_list[["label"]],
+  colors=radar_list[["colors"]])
 
 print_repertoire_radar(list_similarity_matrices=list_single_layers,
   to_compare=comparison_list,
