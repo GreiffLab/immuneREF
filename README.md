@@ -62,7 +62,7 @@ Installation via GitHub:
 ```    
 
 
-Quickstart worfklow
+Quickstart workflow
 ===================
 
 The quickstart workflow in immuneREF_quickstart.R shows the simplest application of 'immuneREF'. In it we run an analysis on a tutorial repertoire dataset consisting of four simulated immune repertoires (included in the package). At the end of the quickstart script, a heatmap visualizing the similarity landscape of the tutorial repertoires is generated. For a more detailed, step-by-step analysis we additionally provide a tutorial R script (immuneREF_tutorial.R)
