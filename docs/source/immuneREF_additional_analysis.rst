@@ -1,8 +1,8 @@
 .. _immuneREF_additional_analysis:
 
-############################
-Additional Analysis Tools
-############################
+#################################
+Additional Exploratory Analysis 
+#################################
 
 .. toctree::
    :maxdepth: 2
