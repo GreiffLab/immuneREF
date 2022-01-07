@@ -16,7 +16,7 @@ immuneREF assumes that the input RNA-seq gene expression matrix is already (1) p
 
 .. _qc_preproc:
 
-1 - Count data quality control and pre-processing
+Count data quality control and pre-processing
 ===================================================
 
 Once the gene expression matrix in read count format has been obtained from the raw fasta/fastq files, immuneREF assumes that the user has checked/corrected mainly (a) low count genes, (b) sequencing bias (gene length and GC content) and (c) different count distribution per sample. 
@@ -24,7 +24,7 @@ Once the gene expression matrix in read count format has been obtained from the 
 Genes with low counts are generally less reliable and increase data noise, making it harder to extract relevant information. The R package NOISeq incorporates procedures to filter out low counts genes in a given dataset with the function ``filtered.data``. We recommend CPM (method 1) when sample size in each condition is small, previously choosing a CPM threshold from the Sensitivity plot included NOISeq (``explo.plot`` function). If the number of replicates per condition is at least five, the Wilcoxon test (method 2) is more appropriate since it does not need to set any threshold.
 NOISeq uses readData function to create a NOISeq object necessary for further functions. The dat function performs different calculations according to the type argument (see `NOISeq manual <https://bioconductor.org/packages/release/bioc/vignettes/NOISeq/inst/doc/NOISeq.pdf>`_ for adequate input format). The plots can be generated for each experimental condition using the argument factor. We provide a code example for low count detection and filtering:
 
-a - Low count filter detection and correction
+Low count filter detection and correction
 --------------------------------------------------
 
 Genes with low counts are generally less reliable and increase data noise, making it harder to extract relevant information. The R package NOISeq incorporates procedures to filter out low counts genes in a given dataset with the function ``filtered.data``. We recommend CPM (method 1) when sample size in each condition is small, previously choosing a CPM threshold from the "Sensitivity plot" included NOISeq (``explo.plot`` function). If the number of replicates per condition is at least five, the Wilcoxon test (method 2) is more appropriate since it does not need to set any threshold.
@@ -39,7 +39,7 @@ NOISeq uses readData function to create a NOISeq object necessary for further fu
     myfilt = filtered.data(RNAseq, factor = "Group", norm = FALSE, depth = NULL, method = 1, cv.cutoff = 100, cpm = 1, p.adj = "fdr")
 
 
-b -  Sequencing bias detection and correction
+Sequencing bias detection and correction
 --------------------------------------------------
 
 The length bias and the GC bias plots describe the relationship between the expression values and the feature length and the GC content, respectively. Two vectors,matrices containing transcript length and GC content for each gen have to be provided (see NOISeq manual for adequate format). As before, the plots can be generated for each experimental condition using the argument factor. Code example:
@@ -58,7 +58,7 @@ If length and GC bias are detected, there exist different normalization methods 
 
 
 
-c - Different count distribution per sample
+Different count distribution per sample
 --------------------------------------------------
 
 The count distribution for all samples can be visualized using a boxplot:
@@ -67,7 +67,7 @@ The normalization methods homogenize,  to a greater or lesser extent, inter-samp
 
 
 
-2 - Normalization
+Normalization
 ======================
 
 NOISeq performs three types of normalizations (RPKM [1]_, UQUA [2]_ and TMM [3]_) that can be applied as follows:
