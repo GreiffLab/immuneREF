@@ -1,7 +1,7 @@
-.. _immuneREF_input_analysis:
+.. _immuneREF_additional_analysis:
 
 ############################
-Analysis of immuneREF input
+Additional Analysis Tools
 ############################
 
 .. toctree::
