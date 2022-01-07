@@ -18,6 +18,7 @@ This section provides an overview over the six immuneREF feature layers:
 *   :ref:`kmer_layer`
 *   :ref:`architecture_layer`
 *   :ref:`convergence_layer`
+*   :ref:`gene_expression`
 *   :ref:`computing_layers`
 
 
@@ -111,6 +112,26 @@ The ``calc_characteristics`` already calculates a basic immunosignature layer ba
 
 
 Additionally, the ``calc_characterstics()`` function has an additional parameter ``models`` which allows the user to read-in a list of ML models compatible with the kebabs function``predict()`` for the calculation of the immunosignature feature.
+
+
+
+.. _gene_expression:
+
+Gene Expression
+------------------
+
+immuneREF allows integration of immune repertoires and gene expression, which is of high interest to experiments that include both receptor and global transcript sequences (i.e. RNA-seq or repertoire experiments paired with transcriptomics). The analysis of omics data is handled by ``calculate_omics_layer()``, which takes a preprocessed and normalized gene expression matrix and sample info data as input.
+
+Firstly, there is a low variation filter to keep the most informative genes from the thousand genes obtained in transcriptomics. Standard deviation (SD) is calculated per gene across samples and all the genes over a certain threshold (default, SD>1) are preserved for subsequent analysis. 
+
+Second, users can choose between three correlation-based methods to construct the immuneREF gene expression layer: (1) Pairwise Pearson correlation between samples (method="PC"); (2) Mutual Rank defined as  
+
+.. math::
+
+    \sqrt{Rank_{AB}\times Rank_{BA}} 
+    
+
+which is the geometric average between the rank of sample A from sample B and the rank of sample B from sample A after pairwise Pearson correlation (``method="MR"``); and (3) Principal Component Analysis (PCA) is applied to the gene expression matrix, the PCA scores matrix that explains enough variability (default, 80%) is retained and pairwise Pearson correlation between samples is applied (``method="PCA"``).
 
 
 
