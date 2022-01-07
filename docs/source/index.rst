@@ -26,6 +26,7 @@ features ranging from fully sequence- to fully frequency-dependent ones.
    single_layer_calculation
    multi_layer_calculation
    immuneREF_output_analysis
+   immuneREF_additional_analysis
    acknowledgments
 
 
