@@ -7,7 +7,7 @@ immuneREF is an R package that enables the analysis of repertoire similarity on 
 
 Documentation: https://immuneREF.readthedocs.io
 
-Publication: tba
+Publication: https://www.biorxiv.org/content/10.1101/2022.01.23.476436v1
 
 ![alt text](docs/source/images/immuneREF_Figures-01.jpg?raw=true)
 
